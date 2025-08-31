@@ -22,12 +22,6 @@ This file tracks development decisions, conversations, and important context for
 - ✅ Shared packages: `@repo/auth`, `@repo/db`, `@repo/ui`
 - ✅ Apps: `web` (main app), `docs` (documentation)
 
-#### Multi-Account Git Setup
-- **jovanChe account**: Used for this project via HTTPS
-- **Predrag-Homestory account**: Used for other projects via SSH
-- **Project config**: Stored in `.git/config` (local)
-- **Global config**: Stored in `~/.gitconfig`
-
 ### Implementation Status
 
 #### ✅ Completed Features
@@ -67,11 +61,6 @@ This file tracks development decisions, conversations, and important context for
 - CI/CD pipeline
 
 ### Technical Decisions
-
-#### Why HTTPS for jovanChe Account?
-- Easier setup than managing multiple SSH keys
-- Works well with 1Password credential management
-- No need for complex SSH configurations
 
 #### Why Monorepo Structure?
 - Shared packages reduce code duplication

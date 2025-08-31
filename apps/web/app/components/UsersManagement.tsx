@@ -124,6 +124,12 @@ export default function UsersManagement({ user }: UsersManagementProps) {
                 {getRoleDisplay(user.role)}
               </span>
               <button
+                onClick={() => router.push("/admin")}
+                className="text-sm text-gray-600 hover:text-gray-900"
+              >
+                Admin Panel
+              </button>
+              <button
                 onClick={() => router.push("/dashboard")}
                 className="text-sm text-gray-600 hover:text-gray-900"
               >

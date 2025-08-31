@@ -4,9 +4,9 @@ This file provides context for AI assistants working on this project.
 
 ## Project Overview
 
-**Name**: Athletics Auth Boilerplate  
-**Repository**: https://github.com/jovanChe/athletics.git  
-**Type**: Next.js monorepo with authentication system  
+**Name**: Athletics Auth Boilerplate
+**Repository**: https://github.com/jovanChe/athletics.git
+**Type**: Next.js monorepo with authentication system
 **Purpose**: Reusable boilerplate for auth-enabled applications
 
 ## Architecture
@@ -72,7 +72,7 @@ athletics/
 ### Frontend
 - `apps/web/app/components/LandingPage.tsx` - Auth forms
 - `apps/web/app/components/DashboardContent.tsx` - Dashboard
-- `apps/web/app/components/AdminContent.tsx` - Admin panel
+- `apps/web/app/components/UsersManagement.tsx` - Admin panel
 - `apps/web/app/middleware.ts` - Route protection
 
 ## Development Setup

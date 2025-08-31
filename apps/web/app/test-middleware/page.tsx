@@ -41,7 +41,7 @@ export default async function TestMiddlewarePage() {
           <div className="mt-2 space-y-2">
             <a href="/" className="block text-blue-600 hover:underline">Home (Public)</a>
             <a href="/dashboard" className="block text-blue-600 hover:underline">Dashboard (Auth Required)</a>
-            <a href="/admin" className="block text-blue-600 hover:underline">Admin (Admin Required)</a>
+            <a href="/admin" className="block text-blue-600 hover:underline">Admin Panel (Admin Required)</a>
           </div>
         </div>
 

@@ -22,8 +22,8 @@ mkdir -p "$ARCHIVE_DIR"
 cat > "$ARCHIVE_FILE" << EOF
 # Conversation: $CONVERSATION_TITLE
 
-**Date**: $TIMESTAMP  
-**Project**: Athletics Auth Boilerplate  
+**Date**: $TIMESTAMP
+**Project**: Athletics Auth Boilerplate
 **Repository**: https://github.com/jovanChe/athletics.git
 
 ## Summary

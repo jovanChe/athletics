@@ -60,7 +60,7 @@ athletics/
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - pnpm
 - MongoDB instance (local or Atlas)
 
@@ -95,7 +95,7 @@ athletics/
    SEED_SUPERADMIN_EMAIL=admin@example.com
    SEED_SUPERADMIN_PASSWORD=password123
    SEED_SUPERADMIN_NAME=Super Admin
-   
+
    # Run seed script
    pnpm --filter web tsx scripts/seed.ts
    ```
@@ -112,7 +112,7 @@ athletics/
 
 1. **Sign Up**: Users can create accounts with email/password
 2. **Sign In**: JWT token stored in httpOnly cookie
-3. **Role-Based Access**: 
+3. **Role-Based Access**:
    - `user`: Access to dashboard
    - `admin`: Access to dashboard + user management
    - `superAdmin`: Full system access
