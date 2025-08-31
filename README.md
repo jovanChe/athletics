@@ -133,3 +133,7 @@ Learn more about the power of Turborepo:
 - [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
 - [Configuration Options](https://turborepo.com/docs/reference/configuration)
 - [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+
+## Project Structure
+
+For an overview of this repository's layout, responsibilities, and common workflows, see [PROJECT_STRUCTURE.md](./PROJECT_STRUCTURE.md).
