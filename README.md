@@ -1,139 +1,216 @@
-# Turborepo starter
+# Athletics - Next.js Auth Boilerplate
 
-This Turborepo starter is maintained by the Turborepo core team.
+A production-ready Next.js monorepo with authentication, role-based access control, and MongoDB integration. Built with Turborepo for scalability and reusability.
 
-## Using this example
+## 🚀 Features
 
-Run the following command:
+- **🔐 Authentication System**
+  - JWT-based authentication with secure cookies
+  - Sign-up, sign-in, and sign-out functionality
+  - Password hashing with bcrypt
+  - Role-based access control (user, admin, superAdmin)
 
-```sh
-npx create-turbo@latest
-```
+- **👥 User Management**
+  - User registration and profile management
+  - Admin panel for user management
+  - Role assignment and updates
+  - Secure API endpoints with authorization
 
-## What's inside?
+- **🏗️ Architecture**
+  - Monorepo structure with Turborepo
+  - Shared packages for auth, database, and UI
+  - TypeScript throughout
+  - MongoDB with Mongoose ODM
 
-This Turborepo includes the following packages/apps:
+- **🎨 UI/UX**
+  - Responsive design with Tailwind CSS
+  - Role-based dashboard content
+  - Admin user management interface
+  - Clean, modern UI components
 
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
+## 📁 Project Structure
 
 ```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
+athletics/
+├── apps/
+│   ├── web/                 # Main Next.js application
+│   │   ├── app/            # App Router pages
+│   │   ├── components/     # React components
+│   │   └── scripts/        # Database seeding
+│   └── docs/               # Documentation site
+├── packages/
+│   ├── auth/               # Authentication utilities
+│   ├── db/                 # Database models and connection
+│   ├── ui/                 # Shared UI components
+│   └── config/             # Shared configuration
+└── ROADMAP.md              # Development roadmap
 ```
 
-You can build a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+## 🛠️ Tech Stack
 
+- **Framework**: Next.js 14 (App Router)
+- **Monorepo**: Turborepo
+- **Database**: MongoDB with Mongoose
+- **Authentication**: JWT with httpOnly cookies
+- **Styling**: Tailwind CSS
+- **Language**: TypeScript
+- **Package Manager**: pnpm
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 18+ 
+- pnpm
+- MongoDB instance (local or Atlas)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd athletics
+   ```
+
+2. **Install dependencies**
+   ```bash
+   pnpm install
+   ```
+
+3. **Set up environment variables**
+   ```bash
+   cd apps/web
+   cp env.example .env.local
+   ```
+
+   Edit `.env.local`:
+   ```env
+   MONGODB_URI=mongodb://localhost:27017/athletics
+   AUTH_SECRET=your-super-secret-key-here
+   ```
+
+4. **Create a superAdmin user**
+   ```bash
+   # Add to .env.local
+   SEED_SUPERADMIN_EMAIL=admin@example.com
+   SEED_SUPERADMIN_PASSWORD=password123
+   SEED_SUPERADMIN_NAME=Super Admin
+   
+   # Run seed script
+   pnpm --filter web tsx scripts/seed.ts
+   ```
+
+5. **Start development server**
+   ```bash
+   pnpm dev
+   ```
+
+6. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 🔐 Authentication Flow
+
+1. **Sign Up**: Users can create accounts with email/password
+2. **Sign In**: JWT token stored in httpOnly cookie
+3. **Role-Based Access**: 
+   - `user`: Access to dashboard
+   - `admin`: Access to dashboard + user management
+   - `superAdmin`: Full system access
+
+## 🛡️ Security Features
+
+- JWT tokens with expiration
+- Password hashing with bcrypt
+- Role-based middleware protection
+- Secure cookie settings
+- Input validation with Zod
+- Protected API routes
+
+## 📊 API Endpoints
+
+### Auth
+- `POST /api/auth/sign-up` - User registration
+- `POST /api/auth/sign-in` - User login
+- `POST /api/auth/sign-out` - User logout
+
+### Users
+- `GET /api/users/me` - Get current user
+- `PATCH /api/users/me` - Update current user
+
+### Admin (admin/superAdmin only)
+- `GET /api/admin/users` - List all users
+- `GET /api/admin/users/[id]` - Get specific user
+- `PATCH /api/admin/users/[id]` - Update user
+
+## 🎯 Usage as Boilerplate
+
+This project is designed to be a reusable boilerplate:
+
+1. **Clone and customize** the branding and styling
+2. **Extend the User model** with additional fields
+3. **Add new roles** in `packages/auth/src/roles.ts`
+4. **Create new protected routes** following the middleware pattern
+5. **Deploy** to Vercel with MongoDB Atlas
+
+## 🚀 Deployment
+
+### Vercel + MongoDB Atlas
+
+1. **Set up MongoDB Atlas**
+   - Create cluster and get connection string
+   - Add to Vercel environment variables
+
+2. **Deploy to Vercel**
+   ```bash
+   npx vercel --prod
+   ```
+
+3. **Configure environment variables**
+   - `MONGODB_URI`: Your Atlas connection string
+   - `AUTH_SECRET`: Strong secret key
+   - `NODE_ENV`: production
+
+## 📝 Development
+
+### Available Scripts
+
+```bash
+# Development
+pnpm dev              # Start all apps
+pnpm dev --filter=web # Start only web app
+
+# Build
+pnpm build            # Build all apps
+pnpm build --filter=web # Build only web app
+
+# Database
+pnpm --filter web tsx scripts/seed.ts # Create superAdmin
+
+# Linting
+pnpm lint             # Lint all packages
 ```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build --filter=docs
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-```
+### Adding New Features
 
-### Develop
+1. **New API routes**: Add to `apps/web/app/api/`
+2. **New components**: Add to `apps/web/app/components/`
+3. **Shared utilities**: Add to `packages/`
+4. **Database models**: Add to `packages/db/src/models/`
 
-To develop all apps and packages, run the following command:
+## 🤝 Contributing
 
-```
-cd my-turborepo
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
 
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev
+## 📄 License
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev
-yarn exec turbo dev
-pnpm exec turbo dev
-```
+MIT License - see LICENSE file for details
 
-You can develop a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+## 🆘 Support
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev --filter=web
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-```
-
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo login
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo login
-yarn exec turbo login
-pnpm exec turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo link
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo link
-yarn exec turbo link
-pnpm exec turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
-
-## Project Structure
-
-For an overview of this repository's layout, responsibilities, and common workflows, see [PROJECT_STRUCTURE.md](./PROJECT_STRUCTURE.md).
+- Check the [ROADMAP.md](./ROADMAP.md) for development status
+- Review the [PROJECT_STRUCTURE.md](./PROJECT_STRUCTURE.md) for architecture details
+- Open an issue for bugs or feature requests
