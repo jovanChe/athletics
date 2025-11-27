@@ -1,0 +1,12 @@
+/**
+ * Design System Styles Entry Point
+ * Import foundational styles (component styles are now CSS Modules)
+ */
+
+@import "./reset.css";
+@import "./tokens.css";
+@import "./themes.css";
+
+html {
+  font-family: var(--font-family-sans);
+}

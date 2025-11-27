@@ -1,0 +1,87 @@
+/**
+ * Dropdown Menu Component Styles
+ * Minimal styling for Radix UI Dropdown Menu
+ */
+
+.content {
+  min-width: 12rem;
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-xs);
+  box-shadow: var(--shadow-lg);
+  z-index: 50;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-sm);
+  cursor: default;
+  user-select: none;
+  outline: none;
+  color: var(--color-text-primary);
+  transition: var(--transition-fast);
+}
+
+.item[data-disabled] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.item[data-highlighted] {
+  background: var(--color-menu-item-bg-hover);
+  color: var(--color-menu-item-text-hover);
+}
+
+.checkboxItem,
+.radioItem {
+  display: flex;
+  align-items: center;
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-sm);
+  cursor: default;
+  user-select: none;
+  outline: none;
+  color: var(--color-text-primary);
+  transition: var(--transition-fast);
+}
+
+.checkboxItem[data-highlighted],
+.radioItem[data-highlighted] {
+  background: var(--color-menu-item-bg-hover);
+  color: var(--color-menu-item-text-hover);
+}
+
+.label {
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+}
+
+.separator {
+  height: 1px;
+  background: var(--color-border-primary);
+  margin: var(--space-xs) 0;
+}
+
+.shortcut {
+  margin-left: auto;
+  padding-left: var(--space-md);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.itemIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--space-sm);
+  width: 1rem;
+  height: 1rem;
+}
+

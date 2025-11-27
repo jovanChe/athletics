@@ -1,0 +1,79 @@
+/**
+ * Card Component Styles
+ * Container component for grouping related content
+ */
+
+.root {
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+
+  /* Styling */
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+
+  /* Spacing */
+  padding: var(--space-lg);
+
+  /* Transitions */
+  transition: var(--transition-fast);
+}
+
+.root:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Card Header */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+.header:last-child {
+  margin-bottom: 0;
+}
+
+/* Card Title */
+.title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+/* Card Description */
+.description {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Card Content */
+.content {
+  flex: 1;
+  padding-top: var(--space-md);
+}
+
+.content:first-child {
+  padding-top: 0;
+}
+
+/* Card Footer */
+.footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding-top: var(--space-md);
+  margin-top: auto;
+}
+
+.footer:first-child {
+  padding-top: 0;
+  margin-top: 0;
+}

@@ -1,0 +1,311 @@
+/**
+ * Input Component Styles
+ * Custom styled input with design tokens
+ */
+
+/* Input Wrapper */
+.ds-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  width: 100%;
+}
+
+/* Input Label */
+.ds-input-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-tight);
+  margin: 0;
+}
+
+/* Input Container */
+.ds-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Input Base */
+.ds-input {
+  /* Layout */
+  flex: 1;
+  width: 100%;
+
+  /* Typography */
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+
+  /* Spacing */
+  padding: var(--space-input-y) var(--space-input-x);
+
+  /* Styling */
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-input);
+
+  /* Interactions */
+  transition: var(--transition-fast);
+  outline: none;
+
+  /* Placeholder */
+  &::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  /* Focus state */
+  &:focus {
+    border-color: var(--color-border-focus);
+    box-shadow: 0 0 0 1px var(--color-border-focus);
+  }
+
+  /* Disabled state */
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: var(--color-bg-muted);
+  }
+
+  /* Read-only state */
+  &:read-only {
+    background: var(--color-bg-muted);
+    cursor: default;
+  }
+}
+
+/* Input with icons */
+.ds-input--with-left-icon {
+  padding-left: 2.5rem;
+}
+
+.ds-input--with-right-icon {
+  padding-right: 2.5rem;
+}
+
+/* Input Variants */
+
+/* Default variant (already styled above) */
+.ds-input--default {
+  /* Base styles already applied */
+}
+
+/* Filled variant */
+.ds-input--filled {
+  background: var(--color-bg-secondary);
+  border-color: transparent;
+
+  &:focus {
+    background: var(--color-bg-primary);
+    border-color: var(--color-border-focus);
+  }
+
+  &:disabled {
+    background: var(--color-bg-muted);
+  }
+}
+
+/* Ghost variant */
+.ds-input--ghost {
+  background: transparent;
+  border-color: transparent;
+
+  &:focus {
+    background: var(--color-bg-primary);
+    border-color: var(--color-border-focus);
+  }
+
+  &:hover:not(:disabled):not(:focus) {
+    background: var(--color-bg-secondary);
+  }
+}
+
+/* Input Sizes */
+.ds-input--sm {
+  padding: 0.25rem 0.5rem;
+  font-size: var(--font-size-xs);
+  height: 2rem;
+
+  &.ds-input--with-left-icon {
+    padding-left: 2rem;
+  }
+
+  &.ds-input--with-right-icon {
+    padding-right: 2rem;
+  }
+}
+
+.ds-input--md {
+  padding: var(--space-input-y) var(--space-input-x);
+  font-size: var(--font-size-sm);
+  height: 2.25rem;
+}
+
+.ds-input--lg {
+  padding: 0.75rem 1rem;
+  font-size: var(--font-size-base);
+  height: 2.75rem;
+
+  &.ds-input--with-left-icon {
+    padding-left: 3rem;
+  }
+
+  &.ds-input--with-right-icon {
+    padding-right: 3rem;
+  }
+}
+
+/* Input States */
+.ds-input--error {
+  border-color: var(--color-error-500);
+
+  &:focus {
+    border-color: var(--color-error-500);
+    box-shadow: 0 0 0 1px var(--color-error-500);
+  }
+}
+
+.ds-input--success {
+  border-color: var(--color-success-500);
+
+  &:focus {
+    border-color: var(--color-success-500);
+    box-shadow: 0 0 0 1px var(--color-success-500);
+  }
+}
+
+.ds-input--warning {
+  border-color: var(--color-warning-500);
+
+  &:focus {
+    border-color: var(--color-warning-500);
+    box-shadow: 0 0 0 1px var(--color-warning-500);
+  }
+}
+
+/* Input Icons */
+.ds-input-icon {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  color: var(--color-text-muted);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ds-input-icon--left {
+  left: 0.75rem;
+}
+
+.ds-input-icon--right {
+  right: 0.75rem;
+}
+
+/* Size-specific icon positioning */
+.ds-input-container:has(.ds-input--sm) .ds-input-icon--left {
+  left: 0.5rem;
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.ds-input-container:has(.ds-input--sm) .ds-input-icon--right {
+  right: 0.5rem;
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.ds-input-container:has(.ds-input--lg) .ds-input-icon--left {
+  left: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.ds-input-container:has(.ds-input--lg) .ds-input-icon--right {
+  right: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Input Helper Text */
+.ds-input-helper {
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.ds-input-helper--error {
+  color: var(--color-error-600);
+}
+
+.ds-input-helper--success {
+  color: var(--color-success-600);
+}
+
+.ds-input-helper--warning {
+  color: var(--color-warning-600);
+}
+
+/* Password Toggle Button */
+.ds-input-password-toggle {
+  position: absolute;
+  right: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  transition: var(--transition-fast);
+  z-index: 2;
+  pointer-events: auto;
+}
+
+.ds-input-password-toggle:hover {
+  color: var(--color-text-secondary);
+}
+
+.ds-input-password-toggle:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  color: var(--color-text-primary);
+}
+
+.ds-input-password-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Size-specific password toggle positioning */
+.ds-input-container:has(.ds-input--sm) .ds-input-password-toggle {
+  right: 0.5rem;
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.ds-input-container:has(.ds-input--lg) .ds-input-password-toggle {
+  right: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .ds-input {
+    border-width: 2px;
+  }
+
+  .ds-input:focus {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+}

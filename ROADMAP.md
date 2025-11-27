@@ -91,7 +91,7 @@ A living plan to guide development, ensure completeness, and make this reusable 
 - [ ] Layout primitives (stack, grid, container)
 - [ ] Data display (table, badge, avatar, skeleton)
 - [ ] Feedback (toast system, alert, dialog)
-- [ ] Docs playground/examples in `apps/docs` with usage guidelines
+- [ ] Docs playground/examples in `ui/design-system` with usage guidelines
 - [ ] Theming guide to swap branding quickly
 
 ## Phase 5 — DevEx, Quality & Testing

@@ -1,0 +1,99 @@
+/**
+ * Theme System
+ * Brand and custom theme overrides
+ */
+
+/* Base theme (already defined in tokens.css) */
+
+/* Example brand theme - Athletics Brand */
+[data-theme="athletics"] {
+  /* Override primary colors with athletics brand */
+  --color-primary-50: #f0f9ff;
+  --color-primary-100: #e0f2fe;
+  --color-primary-200: #bae6fd;
+  --color-primary-300: #7dd3fc;
+  --color-primary-400: #38bdf8;
+  --color-primary-500: #0ea5e9;
+  --color-primary-600: #0284c7;
+  --color-primary-700: #0369a1;
+  --color-primary-800: #075985;
+  --color-primary-900: #0c4a6e;
+
+  /* Update semantic colors to use new primary */
+  --color-interactive-primary: var(--color-primary-600);
+  --color-interactive-primary-hover: var(--color-primary-700);
+  --color-interactive-primary-pressed: var(--color-primary-800);
+  --color-button-primary-bg: var(--color-primary-600);
+  --color-button-primary-border: var(--color-primary-600);
+  --color-border-focus: var(--color-primary-500);
+  --color-focus-ring: var(--color-primary-500);
+}
+
+/* Example custom theme - Purple */
+[data-theme="purple"] {
+  /* Purple primary colors */
+  --color-primary-50: #faf5ff;
+  --color-primary-100: #f3e8ff;
+  --color-primary-200: #e9d5ff;
+  --color-primary-300: #d8b4fe;
+  --color-primary-400: #c084fc;
+  --color-primary-500: #a855f7;
+  --color-primary-600: #9333ea;
+  --color-primary-700: #7c3aed;
+  --color-primary-800: #6b21a8;
+  --color-primary-900: #581c87;
+
+  /* Update semantic colors */
+  --color-interactive-primary: var(--color-primary-600);
+  --color-interactive-primary-hover: var(--color-primary-700);
+  --color-interactive-primary-pressed: var(--color-primary-800);
+  --color-button-primary-bg: var(--color-primary-600);
+  --color-button-primary-border: var(--color-primary-600);
+  --color-border-focus: var(--color-primary-500);
+  --color-focus-ring: var(--color-primary-500);
+}
+
+/* High contrast theme */
+[data-theme="high-contrast"] {
+  --color-text-primary: #000000;
+  --color-text-secondary: #333333;
+  --color-bg-primary: #ffffff;
+  --color-border-primary: #000000;
+  --color-border-secondary: #333333;
+  --color-interactive-primary: #000000;
+  --color-interactive-primary-hover: #333333;
+  --color-button-primary-bg: #000000;
+  --color-button-primary-text: #ffffff;
+  --color-button-secondary-bg: #ffffff;
+  --color-button-secondary-text: #000000;
+  --color-button-secondary-border: #000000;
+}
+
+/* Compact spacing theme */
+[data-spacing="compact"] {
+  --space-button-x: 0.5rem;   /* 8px instead of 12px */
+  --space-button-y: 0.25rem;  /* 4px instead of 8px */
+  --space-input-x: 0.5rem;    /* 8px instead of 12px */
+  --space-input-y: 0.25rem;   /* 4px instead of 8px */
+}
+
+/* Comfortable spacing theme */
+[data-spacing="comfortable"] {
+  --space-button-x: 1rem;     /* 16px instead of 12px */
+  --space-button-y: 0.75rem;  /* 12px instead of 8px */
+  --space-input-x: 1rem;      /* 16px instead of 12px */
+  --space-input-y: 0.75rem;   /* 12px instead of 8px */
+}
+
+/* Reduced motion theme */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+    --duration-slow: 0ms;
+    --transition-fast: none;
+    --transition-normal: none;
+    --transition-button: none;
+    --transition-dialog: none;
+  }
+}

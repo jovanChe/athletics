@@ -1,0 +1,56 @@
+/**
+ * Textarea Component Styles
+ * Multi-line text input component
+ */
+
+.root {
+  /* Layout */
+  flex: 1;
+  width: 100%;
+  min-height: 5rem; /* 80px */
+  resize: vertical;
+
+  /* Typography */
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+
+  /* Spacing */
+  padding: var(--space-input-y) var(--space-input-x);
+
+  /* Styling */
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-input);
+
+  /* Interactions */
+  transition: var(--transition-fast);
+  outline: none;
+
+  /* Placeholder */
+  &::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  /* Focus state */
+  &:focus {
+    border-color: var(--color-border-focus);
+    box-shadow: 0 0 0 1px var(--color-border-focus);
+  }
+
+  /* Disabled state */
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: var(--color-bg-muted);
+    resize: none;
+  }
+
+  /* Read-only state */
+  &:read-only {
+    background: var(--color-bg-muted);
+    cursor: default;
+  }
+}

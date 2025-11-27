@@ -1,0 +1,244 @@
+/**
+ * Button Component Styles - CSS Modules
+ * Using Radix Button primitive with custom styling
+ */
+
+.button {
+  /* Base button styles using design tokens */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+
+  /* Typography */
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+
+  /* Layout */
+  padding: var(--space-button-y) var(--space-button-x);
+  border-radius: var(--radius-button);
+  border: 1px solid transparent;
+
+  /* Interactions */
+  cursor: pointer;
+  transition: var(--transition-button);
+  position: relative;
+  overflow: hidden;
+
+  /* Focus management */
+  outline: none;
+}
+
+.button:disabled,
+.button[data-disabled] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.button[data-loading="true"] {
+  cursor: wait;
+}
+
+.button:focus-visible,
+.button[data-focus-visible] {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Variant: Primary */
+.primary {
+  background: var(--color-button-primary-bg);
+  color: var(--color-button-primary-text);
+  border-color: var(--color-button-primary-border);
+  box-shadow: var(--shadow-button);
+}
+
+.primary:hover:not(:disabled),
+.primary[data-state="open"] {
+  background: var(--color-interactive-primary-hover);
+  box-shadow: var(--shadow-button-hover);
+}
+
+.primary:active,
+.primary[data-state="pressed"] {
+  background: var(--color-interactive-primary-pressed);
+  transform: var(--transform-scale-pressed);
+  box-shadow: var(--shadow-button-pressed);
+}
+
+/* Variant: Secondary */
+.secondary {
+  background: var(--color-button-secondary-bg);
+  color: var(--color-button-secondary-text);
+  border-color: var(--color-button-secondary-border);
+  box-shadow: var(--shadow-button);
+}
+
+.secondary:hover:not(:disabled),
+.secondary[data-state="open"] {
+  background: var(--color-interactive-secondary-hover);
+  box-shadow: var(--shadow-button-hover);
+}
+
+.secondary:active,
+.secondary[data-state="pressed"] {
+  background: var(--color-interactive-secondary-pressed);
+  transform: var(--transform-scale-pressed);
+  box-shadow: var(--shadow-button-pressed);
+}
+
+/* Variant: Ghost */
+.ghost {
+  background: var(--color-button-ghost-bg);
+  color: var(--color-button-ghost-text);
+  border-color: var(--color-button-ghost-border);
+  box-shadow: none;
+}
+
+.ghost:hover:not(:disabled),
+.ghost[data-state="open"] {
+  background: var(--color-interactive-secondary-hover);
+}
+
+.ghost:active,
+.ghost[data-state="pressed"] {
+  background: var(--color-interactive-secondary-pressed);
+  transform: var(--transform-scale-pressed);
+}
+
+/* Variant: Destructive */
+.destructive {
+  background: var(--color-error-600);
+  color: var(--color-text-inverse);
+  border-color: var(--color-error-600);
+  box-shadow: var(--shadow-button);
+}
+
+.destructive:hover:not(:disabled),
+.destructive[data-state="open"] {
+  background: var(--color-error-700);
+  box-shadow: var(--shadow-button-hover);
+}
+
+.destructive:active,
+.destructive[data-state="pressed"] {
+  background: var(--color-error-800);
+  transform: var(--transform-scale-pressed);
+  box-shadow: var(--shadow-button-pressed);
+}
+
+.destructive:focus-visible,
+.destructive[data-focus-visible] {
+  outline-color: var(--color-error-500);
+}
+
+/* Variant: Outline */
+.outline {
+  background: transparent;
+  color: var(--color-text-primary);
+  border-color: var(--color-border-primary);
+  box-shadow: none;
+}
+
+.outline:hover:not(:disabled),
+.outline[data-state="open"] {
+  background: var(--color-bg-secondary);
+}
+
+.outline:active,
+.outline[data-state="pressed"] {
+  background: var(--color-bg-muted);
+  transform: var(--transform-scale-pressed);
+}
+
+/* Variant: Link */
+.link {
+  background: transparent;
+  color: var(--color-interactive-primary);
+  border-color: transparent;
+  box-shadow: none;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  padding: 0;
+  height: auto;
+  font-weight: var(--font-weight-normal);
+}
+
+.link:hover:not(:disabled),
+.link[data-state="open"] {
+  text-decoration: none;
+}
+
+.link:active,
+.link[data-state="pressed"] {
+  opacity: 0.8;
+}
+
+/* Size: Small */
+.sm {
+  height: 2rem;
+  padding: 0.25rem 0.75rem;
+  font-size: var(--font-size-xs);
+  gap: 0.25rem;
+}
+
+/* Size: Medium (default) */
+.md {
+  height: 2.25rem;
+  padding: var(--space-button-y) var(--space-button-x);
+  font-size: var(--font-size-sm);
+  gap: 0.5rem;
+}
+
+/* Size: Large */
+.lg {
+  height: 2.5rem;
+  padding: 0.5rem 1.5rem;
+  font-size: var(--font-size-base);
+  gap: 0.5rem;
+}
+
+/* Size: Extra Large */
+.xl {
+  height: 3rem;
+  padding: 0.75rem 2rem;
+  font-size: var(--font-size-base);
+  gap: 0.75rem;
+}
+
+/* Size: Icon */
+.icon {
+  height: 2.25rem;
+  width: 2.25rem;
+  padding: 0;
+  gap: 0;
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingSpinner {
+  animation: spin 1s linear infinite;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .button {
+    border-width: 2px;
+  }
+
+  .button:focus-visible,
+  .button[data-focus-visible] {
+    outline-width: 3px;
+  }
+}

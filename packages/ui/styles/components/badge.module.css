@@ -1,0 +1,54 @@
+/**
+ * Badge Component Styles
+ * Small status indicator component
+ */
+
+.base {
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Typography */
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-none);
+  white-space: nowrap;
+
+  /* Spacing */
+  padding: 0.125rem 0.5rem; /* 2px 8px */
+
+  /* Border */
+  border-radius: var(--radius-full);
+
+  /* Transitions */
+  transition: var(--transition-fast);
+}
+
+/* Default variant */
+.default {
+  background: var(--color-interactive-primary);
+  color: var(--color-text-inverse);
+  border: 1px solid var(--color-interactive-primary);
+}
+
+/* Secondary variant */
+.secondary {
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-primary);
+}
+
+/* Destructive variant */
+.destructive {
+  background: var(--color-error-500);
+  color: var(--color-text-inverse);
+  border: 1px solid var(--color-error-500);
+}
+
+/* Outline variant */
+.outline {
+  background: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-primary);
+}

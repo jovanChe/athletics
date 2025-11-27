@@ -1,0 +1,169 @@
+/**
+ * MenuItem Component Styles - CSS Modules
+ * Optimized for sidebar navigation menus
+ */
+
+.menuItem {
+  /* Base menu item styles using design tokens */
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  width: 100%;
+
+  /* Typography */
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  text-align: left;
+
+  /* Layout */
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  border: none;
+  background: transparent;
+
+  /* Interactions */
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+
+  /* Focus management */
+  outline: none;
+
+  /* Colors */
+  background: var(--color-menu-item-bg-default);
+  color: var(--color-menu-item-text-default);
+}
+
+.menuItem:hover:not(:disabled),
+.menuItem[data-state="open"] {
+  background: var(--color-menu-item-bg-hover);
+  color: var(--color-menu-item-text-hover);
+}
+
+.menuItem:active,
+.menuItem[data-state="pressed"] {
+  background: var(--color-menu-item-bg-pressed);
+  transform: scale(0.98);
+}
+
+.menuItem:focus-visible {
+  outline: 2px solid var(--color-menu-item-border-focus);
+  outline-offset: 2px;
+}
+
+.menuItem:disabled,
+.menuItem[data-disabled] {
+  pointer-events: none;
+  color: var(--color-menu-item-text-disabled);
+}
+
+/* Active state */
+.active {
+  background: var(--color-menu-item-bg-active);
+  color: var(--color-menu-item-text-active);
+  font-weight: var(--font-weight-medium);
+}
+
+.active:hover {
+  background: var(--color-menu-item-bg-active-hover);
+}
+
+/* Icon container */
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+/* Label container */
+.label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Collapsed state (when sidebar is collapsed) */
+.collapsed {
+  justify-content: center;
+  padding: var(--space-sm);
+  min-width: 2.5rem;
+}
+
+.collapsed .label {
+  display: none;
+}
+
+.collapsed .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Size variants */
+.small {
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--font-size-xs);
+  gap: var(--space-xs);
+}
+
+.small .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.large {
+  padding: var(--space-md) var(--space-lg);
+  font-size: var(--font-size-base);
+  gap: var(--space-md);
+}
+
+.large .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Badge/indicator support */
+.menuItem .badge {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.collapsed .badge {
+  display: none;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .menuItem {
+    border: 1px solid transparent;
+  }
+
+  .menuItem:hover,
+  .active {
+    border-color: var(--color-border-primary);
+  }
+
+  .menuItem:focus-visible {
+    outline-width: 3px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .menuItem {
+    transition: none;
+  }
+
+  .menuItem:active {
+    transform: none;
+  }
+}
