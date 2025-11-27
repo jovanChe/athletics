@@ -1,0 +1,47 @@
+/**
+ * Alert Component Styles
+ * Alert message component for notifications and feedback
+ */
+
+.base {
+  position: relative;
+  width: 100%;
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-primary);
+  background: var(--color-bg-secondary);
+}
+
+.default {
+  border-color: var(--color-border-primary);
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+}
+
+.destructive {
+  border-color: var(--color-interactive-destructive);
+  background: var(--color-interactive-destructive);
+  color: var(--color-text-inverse);
+}
+
+.title {
+  margin: 0 0 var(--space-xs) 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.description {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  opacity: 0.9;
+}
+
+.base:has(.title) .description {
+  margin-top: var(--space-xs);
+}
+

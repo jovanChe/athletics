@@ -99,37 +99,36 @@ export type { CheckboxProps } from './checkbox';
 export { RadioGroup, RadioGroupItem } from './radio-group';
 export type { RadioGroupProps, RadioGroupItemProps } from './radio-group';
 
-export { Label } from './label';
-export type { LabelProps } from './label';
+export { Switch } from './switch';
+export type { SwitchProps } from './switch';
+
+export { Slider } from './slider';
+export type { SliderProps } from './slider';
+
+export { Alert, AlertTitle, AlertDescription, alertVariants } from './alert';
+export type { AlertProps } from './alert';
 
 export {
-  Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardDescription,
-  CardContent,
-} from './card';
-export type {
-  CardProps,
-  CardHeaderProps,
-  CardFooterProps,
-  CardTitleProps,
-  CardDescriptionProps,
-  CardContentProps,
-} from './card';
+  AlertDialog,
+  AlertDialogPortal,
+  AlertDialogOverlay,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogFooter,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogAction,
+  AlertDialogCancel,
+} from './alert-dialog';
 
-export { Separator } from './separator';
-export type { SeparatorProps } from './separator';
-
-export { Badge, badgeVariants } from './badge';
-export type { BadgeProps } from './badge';
-
-export { Textarea } from './textarea';
-export type { TextareaProps } from './textarea';
-
-export { Checkbox } from './checkbox';
-export type { CheckboxProps } from './checkbox';
-
-export { RadioGroup, RadioGroupItem } from './radio-group';
-export type { RadioGroupProps, RadioGroupItemProps } from './radio-group';
+export {
+  useFormField,
+  Form,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormDescription,
+  FormMessage,
+  FormField,
+} from './form';
