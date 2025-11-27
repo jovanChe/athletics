@@ -1,0 +1,38 @@
+/**
+ * Form Component Styles
+ * React Hook Form integration component
+ */
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+.label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.labelError {
+  color: var(--color-interactive-destructive);
+}
+
+.description {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-secondary);
+}
+
+.message {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-normal);
+  color: var(--color-interactive-destructive);
+}
+

@@ -98,3 +98,37 @@ export type { CheckboxProps } from './checkbox';
 
 export { RadioGroup, RadioGroupItem } from './radio-group';
 export type { RadioGroupProps, RadioGroupItemProps } from './radio-group';
+
+export { Switch } from './switch';
+export type { SwitchProps } from './switch';
+
+export { Slider } from './slider';
+export type { SliderProps } from './slider';
+
+export { Alert, AlertTitle, AlertDescription, alertVariants } from './alert';
+export type { AlertProps } from './alert';
+
+export {
+  AlertDialog,
+  AlertDialogPortal,
+  AlertDialogOverlay,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogFooter,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogAction,
+  AlertDialogCancel,
+} from './alert-dialog';
+
+export {
+  useFormField,
+  Form,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormDescription,
+  FormMessage,
+  FormField,
+} from './form';
