@@ -98,38 +98,3 @@ export type { CheckboxProps } from './checkbox';
 
 export { RadioGroup, RadioGroupItem } from './radio-group';
 export type { RadioGroupProps, RadioGroupItemProps } from './radio-group';
-
-export { Label } from './label';
-export type { LabelProps } from './label';
-
-export {
-  Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardDescription,
-  CardContent,
-} from './card';
-export type {
-  CardProps,
-  CardHeaderProps,
-  CardFooterProps,
-  CardTitleProps,
-  CardDescriptionProps,
-  CardContentProps,
-} from './card';
-
-export { Separator } from './separator';
-export type { SeparatorProps } from './separator';
-
-export { Badge, badgeVariants } from './badge';
-export type { BadgeProps } from './badge';
-
-export { Textarea } from './textarea';
-export type { TextareaProps } from './textarea';
-
-export { Checkbox } from './checkbox';
-export type { CheckboxProps } from './checkbox';
-
-export { RadioGroup, RadioGroupItem } from './radio-group';
-export type { RadioGroupProps, RadioGroupItemProps } from './radio-group';

@@ -23,7 +23,6 @@ export default function PrimitivesLayout({
     { href: '/primitives/select', label: 'Select' },
     { href: '/primitives/layout', label: 'Layout' },
     { href: '/primitives/table', label: 'Table' },
-    { href: '/primitives/tier1', label: 'Tier 1 Components' },
     ...tier1Components,
     { href: '/primitives/menu-item', label: 'MenuItem' },
     { href: '/primitives/avatar', label: 'Avatar' },
