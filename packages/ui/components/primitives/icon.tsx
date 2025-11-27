@@ -16,7 +16,7 @@ const iconSizes = {
 export interface IconProps extends React.SVGProps<SVGSVGElement> {
   size?: keyof typeof iconSizes;
   className?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const Icon = React.forwardRef<SVGSVGElement, IconProps>(

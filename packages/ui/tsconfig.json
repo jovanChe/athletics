@@ -13,6 +13,9 @@
   },
   "include": [
     "src",
+    "styles/**/*.ts",
+    "components/**/*.tsx",
+    "app/**/*.tsx",
     ".next/types/**/*.ts"
   ],
   "exclude": [

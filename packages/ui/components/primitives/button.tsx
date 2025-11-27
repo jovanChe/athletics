@@ -26,19 +26,19 @@ interface ButtonVariantsConfig {
 
 const buttonVariants: ButtonVariantsConfig = {
   variant: {
-    primary: styles.primary,
-    secondary: styles.secondary,
-    ghost: styles.ghost,
-    destructive: styles.destructive,
-    outline: styles.outline,
-    link: styles.link,
+    primary: (styles.primary ?? "") as string,
+    secondary: (styles.secondary ?? "") as string,
+    ghost: (styles.ghost ?? "") as string,
+    destructive: (styles.destructive ?? "") as string,
+    outline: (styles.outline ?? "") as string,
+    link: (styles.link ?? "") as string,
   },
   size: {
-    sm: styles.sm,
-    md: styles.md,
-    lg: styles.lg,
-    xl: styles.xl,
-    icon: styles.icon,
+    sm: (styles.sm ?? "") as string,
+    md: (styles.md ?? "") as string,
+    lg: (styles.lg ?? "") as string,
+    xl: (styles.xl ?? "") as string,
+    icon: (styles.icon ?? "") as string,
   },
 };
 

@@ -5,7 +5,7 @@
  */
 
 import React from "react";
-import { Icon } from "./icon";
+import { Icon, IconProps } from "./icon";
 
 // Import actual Radix UI Icons
 import {
@@ -32,125 +32,125 @@ import {
 } from "@radix-ui/react-icons";
 
 // Navigation Icons
-export const HomeIcon = (props: React.SVGProps<SVGSVGElement>) => (
+export const HomeIcon = (props: IconProps) => (
   <Icon {...props}>
     <RadixHomeIcon />
   </Icon>
 );
 
-export const DashboardIcon = (props: React.SVGProps<SVGSVGElement>) => (
+export const DashboardIcon = (props: IconProps) => (
   <Icon {...props}>
     <RadixDashboardIcon />
   </Icon>
 );
 
-export const UsersIcon = (props: React.SVGProps<SVGSVGElement>) => (
+export const UsersIcon = (props: IconProps) => (
   <Icon {...props}>
     <RadixPersonIcon />
   </Icon>
 );
 
-export const SettingsIcon = (props: React.SVGProps<SVGSVGElement>) => (
+export const SettingsIcon = (props: IconProps) => (
   <Icon {...props}>
     <RadixGearIcon />
   </Icon>
 );
 
-export const AnalyticsIcon = (props: React.SVGProps<SVGSVGElement>) => (
+export const AnalyticsIcon = (props: IconProps) => (
   <Icon {...props}>
     <RadixBarChartIcon />
   </Icon>
 );
 
-export const ReportsIcon = (props: React.SVGProps<SVGSVGElement>) => (
+export const ReportsIcon = (props: IconProps) => (
   <Icon {...props}>
     <RadixFileTextIcon />
   </Icon>
 );
 
 // Action Icons
-export const PlusIcon = (props: React.SVGProps<SVGSVGElement>) => (
+export const PlusIcon = (props: IconProps) => (
   <Icon {...props}>
     <RadixPlusIcon />
   </Icon>
 );
 
-export const EditIcon = (props: React.SVGProps<SVGSVGElement>) => (
+export const EditIcon = (props: IconProps) => (
   <Icon {...props}>
     <RadixPencil1Icon />
   </Icon>
 );
 
-export const DeleteIcon = (props: React.SVGProps<SVGSVGElement>) => (
+export const DeleteIcon = (props: IconProps) => (
   <Icon {...props}>
     <RadixTrashIcon />
   </Icon>
 );
 
-export const SearchIcon = (props: React.SVGProps<SVGSVGElement>) => (
+export const SearchIcon = (props: IconProps) => (
   <Icon {...props}>
     <RadixMagnifyingGlassIcon />
   </Icon>
 );
 
-export const FilterIcon = (props: React.SVGProps<SVGSVGElement>) => (
+export const FilterIcon = (props: IconProps) => (
   <Icon {...props}>
     <RadixMixerHorizontalIcon />
   </Icon>
 );
 
 // Status Icons
-export const CheckIcon = (props: React.SVGProps<SVGSVGElement>) => (
+export const CheckIcon = (props: IconProps) => (
   <Icon {...props}>
     <RadixCheckIcon />
   </Icon>
 );
 
-export const CrossIcon = (props: React.SVGProps<SVGSVGElement>) => (
+export const CrossIcon = (props: IconProps) => (
   <Icon {...props}>
     <RadixCross2Icon />
   </Icon>
 );
 
-export const WarningIcon = (props: React.SVGProps<SVGSVGElement>) => (
+export const WarningIcon = (props: IconProps) => (
   <Icon {...props}>
     <RadixExclamationTriangleIcon />
   </Icon>
 );
 
-export const InfoIcon = (props: React.SVGProps<SVGSVGElement>) => (
+export const InfoIcon = (props: IconProps) => (
   <Icon {...props}>
     <RadixInfoCircledIcon />
   </Icon>
 );
 
 // Communication Icons
-export const MessageIcon = (props: React.SVGProps<SVGSVGElement>) => (
+export const MessageIcon = (props: IconProps) => (
   <Icon {...props}>
     <RadixChatBubbleIcon />
   </Icon>
 );
 
-export const MailIcon = (props: React.SVGProps<SVGSVGElement>) => (
+export const MailIcon = (props: IconProps) => (
   <Icon {...props}>
     <RadixEnvelopeClosedIcon />
   </Icon>
 );
 
-export const BellIcon = (props: React.SVGProps<SVGSVGElement>) => (
+export const BellIcon = (props: IconProps) => (
   <Icon {...props}>
     <RadixBellIcon />
   </Icon>
 );
 
 // Security Icons
-export const LockIcon = (props: React.SVGProps<SVGSVGElement>) => (
+export const LockIcon = (props: IconProps) => (
   <Icon {...props}>
     <RadixLockClosedIcon />
   </Icon>
 );
 
-export const UnlockIcon = (props: React.SVGProps<SVGSVGElement>) => (
+export const UnlockIcon = (props: IconProps) => (
   <Icon {...props}>
     <RadixLockOpen1Icon />
   </Icon>

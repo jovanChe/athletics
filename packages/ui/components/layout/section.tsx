@@ -17,7 +17,7 @@ const sectionSizes = {
   "2xl": "var(--space-5xl)", // 8rem
 } as const;
 
-const Section = React.forwardRef<HTMLElement, SectionProps>(
+const Section = React.forwardRef<HTMLDivElement, SectionProps>(
   (
     {
       as: Component = "section",

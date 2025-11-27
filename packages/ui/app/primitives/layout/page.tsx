@@ -13,6 +13,13 @@ import {
   Button,
   MenuItem,
   Table,
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableCaption,
   Icons,
 } from "../../../src";
 
@@ -182,32 +189,33 @@ export default function LayoutPage() {
           <h3 style={{ fontSize: "var(--font-size-base)", margin: 0, marginBottom: "var(--space-sm)" }}>
             Basic Table
           </h3>
-          <Table.Root variant="ghost" size="2" layout="auto">
-            <Table.Header>
-              <Table.Row>
-                <Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
-                <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
-                <Table.ColumnHeaderCell>Group</Table.ColumnHeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              <Table.Row>
-                <Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
-                <Table.Cell>danilo@example.com</Table.Cell>
-                <Table.Cell>Developer</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
-                <Table.Cell>zahra@example.com</Table.Cell>
-                <Table.Cell>Admin</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.RowHeaderCell>Jasper Eriksson</Table.RowHeaderCell>
-                <Table.Cell>jasper@example.com</Table.Cell>
-                <Table.Cell>Developer</Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table.Root>
+          <Table variant="ghost" size="2">
+            <TableCaption>A list of team members and their roles.</TableCaption>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Full name</TableHead>
+                <TableHead>Email</TableHead>
+                <TableHead>Group</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell style={{ fontWeight: "var(--font-weight-medium)" }}>Danilo Sousa</TableCell>
+                <TableCell>danilo@example.com</TableCell>
+                <TableCell>Developer</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell style={{ fontWeight: "var(--font-weight-medium)" }}>Zahra Ambessa</TableCell>
+                <TableCell>zahra@example.com</TableCell>
+                <TableCell>Admin</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell style={{ fontWeight: "var(--font-weight-medium)" }}>Jasper Eriksson</TableCell>
+                <TableCell>jasper@example.com</TableCell>
+                <TableCell>Developer</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
         </Box>
 
         {/* Table with Surface Variant */}
@@ -215,36 +223,43 @@ export default function LayoutPage() {
           <h3 style={{ fontSize: "var(--font-size-base)", margin: 0, marginBottom: "var(--space-sm)" }}>
             Table with Surface Variant
           </h3>
-          <Table.Root variant="surface" layout="auto">
-            <Table.Header>
-              <Table.Row>
-                <Table.ColumnHeaderCell>Product</Table.ColumnHeaderCell>
-                <Table.ColumnHeaderCell>Price</Table.ColumnHeaderCell>
-                <Table.ColumnHeaderCell>Stock</Table.ColumnHeaderCell>
-                <Table.ColumnHeaderCell>Status</Table.ColumnHeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              <Table.Row>
-                <Table.RowHeaderCell>Widget A</Table.RowHeaderCell>
-                <Table.Cell>$29.99</Table.Cell>
-                <Table.Cell>150</Table.Cell>
-                <Table.Cell>In Stock</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.RowHeaderCell>Widget B</Table.RowHeaderCell>
-                <Table.Cell>$49.99</Table.Cell>
-                <Table.Cell>23</Table.Cell>
-                <Table.Cell>Low Stock</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.RowHeaderCell>Widget C</Table.RowHeaderCell>
-                <Table.Cell>$19.99</Table.Cell>
-                <Table.Cell>0</Table.Cell>
-                <Table.Cell>Out of Stock</Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table.Root>
+          <Table variant="surface" size="2">
+            <TableCaption>Product inventory overview.</TableCaption>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Product</TableHead>
+                <TableHead>Price</TableHead>
+                <TableHead>Stock</TableHead>
+                <TableHead>Status</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell style={{ fontWeight: "var(--font-weight-medium)" }}>Widget A</TableCell>
+                <TableCell>$29.99</TableCell>
+                <TableCell>150</TableCell>
+                <TableCell>In Stock</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell style={{ fontWeight: "var(--font-weight-medium)" }}>Widget B</TableCell>
+                <TableCell>$49.99</TableCell>
+                <TableCell>23</TableCell>
+                <TableCell>Low Stock</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell style={{ fontWeight: "var(--font-weight-medium)" }}>Widget C</TableCell>
+                <TableCell>$19.99</TableCell>
+                <TableCell>0</TableCell>
+                <TableCell>Out of Stock</TableCell>
+              </TableRow>
+            </TableBody>
+            <TableFooter>
+              <TableRow>
+                <TableCell colSpan={3}>Total Products</TableCell>
+                <TableCell>3</TableCell>
+              </TableRow>
+            </TableFooter>
+          </Table>
         </Box>
 
         {/* Table Size Variants */}
@@ -258,70 +273,70 @@ export default function LayoutPage() {
                 <p style={{ fontSize: "var(--font-size-xs)", margin: 0, marginBottom: "var(--space-xs)", color: "var(--color-text-secondary)" }}>
                   Size 1 (Small)
                 </p>
-                <Table.Root variant="ghost" size="1">
-                  <Table.Header>
-                    <Table.Row>
-                      <Table.ColumnHeaderCell>Name</Table.ColumnHeaderCell>
-                      <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
-                    </Table.Row>
-                  </Table.Header>
-                  <Table.Body>
-                    <Table.Row>
-                      <Table.RowHeaderCell>John Doe</Table.RowHeaderCell>
-                      <Table.Cell>john@example.com</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                      <Table.RowHeaderCell>Jane Smith</Table.RowHeaderCell>
-                      <Table.Cell>jane@example.com</Table.Cell>
-                    </Table.Row>
-                  </Table.Body>
-                </Table.Root>
+                <Table variant="ghost" size="1">
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Name</TableHead>
+                      <TableHead>Email</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell style={{ fontWeight: "var(--font-weight-medium)" }}>John Doe</TableCell>
+                      <TableCell>john@example.com</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell style={{ fontWeight: "var(--font-weight-medium)" }}>Jane Smith</TableCell>
+                      <TableCell>jane@example.com</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
               </Box>
               <Box>
                 <p style={{ fontSize: "var(--font-size-xs)", margin: 0, marginBottom: "var(--space-xs)", color: "var(--color-text-secondary)" }}>
                   Size 2 (Default)
                 </p>
-                <Table.Root variant="ghost" size="2">
-                  <Table.Header>
-                    <Table.Row>
-                      <Table.ColumnHeaderCell>Name</Table.ColumnHeaderCell>
-                      <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
-                    </Table.Row>
-                  </Table.Header>
-                  <Table.Body>
-                    <Table.Row>
-                      <Table.RowHeaderCell>John Doe</Table.RowHeaderCell>
-                      <Table.Cell>john@example.com</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                      <Table.RowHeaderCell>Jane Smith</Table.RowHeaderCell>
-                      <Table.Cell>jane@example.com</Table.Cell>
-                    </Table.Row>
-                  </Table.Body>
-                </Table.Root>
+                <Table variant="ghost" size="2">
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Name</TableHead>
+                      <TableHead>Email</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell style={{ fontWeight: "var(--font-weight-medium)" }}>John Doe</TableCell>
+                      <TableCell>john@example.com</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell style={{ fontWeight: "var(--font-weight-medium)" }}>Jane Smith</TableCell>
+                      <TableCell>jane@example.com</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
               </Box>
               <Box>
                 <p style={{ fontSize: "var(--font-size-xs)", margin: 0, marginBottom: "var(--space-xs)", color: "var(--color-text-secondary)" }}>
                   Size 3 (Large)
                 </p>
-                <Table.Root variant="ghost" size="3">
-                  <Table.Header>
-                    <Table.Row>
-                      <Table.ColumnHeaderCell>Name</Table.ColumnHeaderCell>
-                      <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
-                    </Table.Row>
-                  </Table.Header>
-                  <Table.Body>
-                    <Table.Row>
-                      <Table.RowHeaderCell>John Doe</Table.RowHeaderCell>
-                      <Table.Cell>john@example.com</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                      <Table.RowHeaderCell>Jane Smith</Table.RowHeaderCell>
-                      <Table.Cell>jane@example.com</Table.Cell>
-                    </Table.Row>
-                  </Table.Body>
-                </Table.Root>
+                <Table variant="ghost" size="3">
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Name</TableHead>
+                      <TableHead>Email</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell style={{ fontWeight: "var(--font-weight-medium)" }}>John Doe</TableCell>
+                      <TableCell>john@example.com</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell style={{ fontWeight: "var(--font-weight-medium)" }}>Jane Smith</TableCell>
+                      <TableCell>jane@example.com</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
               </Box>
             </Flex>
           </Box>

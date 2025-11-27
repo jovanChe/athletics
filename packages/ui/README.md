@@ -1,6 +1,8 @@
 # Flexible Design System
 
-A themeable design system built with Radix UI primitives and CSS custom properties, designed for maximum flexibility and brand customization.
+A themeable design system built with shadcn/ui components (adapted to CSS Modules) and Radix UI primitives, designed for maximum flexibility and brand customization.
+
+> **Architecture**: See [ARCHITECTURE.md](./ARCHITECTURE.md) for detailed information about component sources, styling approach, and design decisions.
 
 ## Features
 

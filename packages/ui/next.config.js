@@ -4,8 +4,6 @@ const nextConfig = {
     externalDir: true,
   },
   transpilePackages: ['@repo/ui'],
-  // Enable CSS Modules
-  cssModules: true,
 }
 
 module.exports = nextConfig;

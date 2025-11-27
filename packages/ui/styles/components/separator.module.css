@@ -1,0 +1,21 @@
+/**
+ * Separator Component Styles
+ * Visual divider component
+ */
+
+.root {
+  flex-shrink: 0;
+  background: var(--color-border-primary);
+}
+
+/* Horizontal separator */
+.horizontal {
+  width: 100%;
+  height: 1px;
+}
+
+/* Vertical separator */
+.vertical {
+  width: 1px;
+  height: 100%;
+}
