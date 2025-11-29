@@ -23,6 +23,22 @@ export default function PrimitivesLayout({
     { href: '/primitives/alert-dialog', label: 'Alert Dialog' },
   ];
 
+  const tier3Components = [
+    { href: '/primitives/tabs', label: 'Tabs' },
+    { href: '/primitives/breadcrumb', label: 'Breadcrumb' },
+    { href: '/primitives/pagination', label: 'Pagination' },
+    { href: '/primitives/tooltip', label: 'Tooltip' },
+    { href: '/primitives/popover', label: 'Popover' },
+  ];
+
+  const tier4Components = [
+    { href: '/primitives/sheet', label: 'Sheet' },
+    { href: '/primitives/drawer', label: 'Drawer' },
+    { href: '/primitives/skeleton', label: 'Skeleton' },
+    { href: '/primitives/progress', label: 'Progress' },
+    { href: '/primitives/toast', label: 'Toast' },
+  ];
+
   const sidebarItems = [
     { href: '/primitives', label: 'Overview' },
     { href: '/primitives/button', label: 'Button' },
@@ -33,6 +49,8 @@ export default function PrimitivesLayout({
     { href: '/primitives/table', label: 'Table' },
     ...tier1Components,
     ...tier2Components,
+    ...tier3Components,
+    ...tier4Components,
     { href: '/primitives/menu-item', label: 'MenuItem' },
     { href: '/primitives/avatar', label: 'Avatar' },
     { href: '/primitives/dropdown-menu', label: 'Dropdown Menu' },
