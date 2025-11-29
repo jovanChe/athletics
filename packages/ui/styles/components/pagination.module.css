@@ -1,0 +1,96 @@
+/**
+ * Pagination Component Styles
+ * Data table navigation component
+ */
+
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-xs);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  padding: 0 var(--space-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: var(--transition-fast);
+  cursor: pointer;
+  outline: none;
+
+  /* Hover state */
+  &:hover:not([aria-disabled="true"]) {
+    background: var(--color-bg-secondary);
+    border-color: var(--color-border-focus);
+  }
+
+  /* Focus state */
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+
+  /* Active state */
+  &.linkActive {
+    background: var(--color-interactive-primary);
+    color: var(--color-text-inverse);
+    border-color: var(--color-interactive-primary);
+  }
+
+  /* Disabled state */
+  &[aria-disabled="true"] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.previous,
+.next {
+  padding: 0 var(--space-md);
+}
+
+.ellipsis {
+  display: flex;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-tertiary);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
