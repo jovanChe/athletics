@@ -75,6 +75,9 @@
   --space-button-y: 0.25rem;  /* 4px instead of 8px */
   --space-input-x: 0.5rem;    /* 8px instead of 12px */
   --space-input-y: 0.25rem;   /* 4px instead of 8px */
+  /* Sidebar Menu Button - Compact */
+  --space-sidebar-button-x: 0.5rem;   /* 8px */
+  --space-sidebar-button-y: 0.25rem;  /* 4px */
 }
 
 /* Comfortable spacing theme */
@@ -83,6 +86,9 @@
   --space-button-y: 0.75rem;  /* 12px instead of 8px */
   --space-input-x: 1rem;      /* 16px instead of 12px */
   --space-input-y: 0.75rem;   /* 12px instead of 8px */
+  /* Sidebar Menu Button - Comfortable */
+  --space-sidebar-button-x: 1rem;     /* 16px */
+  --space-sidebar-button-y: 0.75rem;  /* 12px */
 }
 
 /* Reduced motion theme */

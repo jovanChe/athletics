@@ -47,6 +47,7 @@ export default function PrimitivesLayout({
     { href: '/primitives/select', label: 'Select' },
     { href: '/primitives/layout', label: 'Layout' },
     { href: '/primitives/table', label: 'Table' },
+    { href: '/primitives/sidebar', label: 'Sidebar' },
     ...tier1Components,
     ...tier2Components,
     ...tier3Components,

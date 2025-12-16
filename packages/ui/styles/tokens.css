@@ -141,6 +141,10 @@
   --space-input-x: 0.75rem;   /* 12px */
   --space-input-y: 0.5rem;    /* 8px */
 
+  /* Spacing - Sidebar Menu Button */
+  --space-sidebar-button-x: 0.75rem;  /* 12px */
+  --space-sidebar-button-y: 0.5rem;   /* 8px */
+
   /* Typography - Font Families */
   --font-family-sans: Inter, system-ui, sans-serif;
   --font-family-mono: "JetBrains Mono", Consolas, monospace;

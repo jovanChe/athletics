@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
+import { ChevronRightIcon } from "@radix-ui/react-icons";
 import { cn } from "../utilities/cn";
 import styles from "../../styles/components/breadcrumb.module.css";
 
@@ -81,7 +82,13 @@ const BreadcrumbSeparator = ({
     className={cn(styles.separator, className)}
     {...props}
   >
-    {children ?? "/"}
+    {children ?? (
+      <ChevronRightIcon
+        width="16"
+        height="16"
+        style={{ display: "block" }}
+      />
+    )}
   </li>
 );
 BreadcrumbSeparator.displayName = "BreadcrumbSeparator";
@@ -110,7 +117,7 @@ const BreadcrumbEllipsis = ({
         clipRule="evenodd"
       />
     </svg>
-    <span className="sr-only">More</span>
+    <span className="sr-only">...</span>
   </span>
 );
 BreadcrumbEllipsis.displayName = "BreadcrumbEllipsis";

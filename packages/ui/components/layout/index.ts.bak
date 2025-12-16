@@ -1,5 +1,6 @@
 /**
  * Layout Components
+ * Box, Flex, Grid, Container, Section, Sidebar, Table
  */
 
 export { Box } from "./box";
@@ -17,6 +18,8 @@ export type { ContainerProps } from "./container";
 export { Section } from "./section";
 export type { SectionProps } from "./section";
 
+export { Sidebar, SidebarContent, SidebarTrigger } from "./sidebar";
+export type { SidebarProps, SidebarContentProps, SidebarTriggerProps } from "./sidebar";
 
 export {
   Table,

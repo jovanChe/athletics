@@ -1,0 +1,502 @@
+/* Sidebar Provider */
+.provider {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* Sidebar Base */
+.sidebarBase {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: var(--sidebar-width, 16rem);
+  height: 100%;
+  background: var(--color-bg-primary);
+  border-right: 1px solid var(--color-border-primary);
+  transition: width var(--transition-normal), transform var(--transition-normal);
+  overflow: hidden;
+}
+
+/* Sidebar Variants */
+.sidebar {
+  /* Default sidebar variant */
+}
+
+.sidebarFloating {
+  margin: var(--space-md);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-primary);
+  box-shadow: var(--shadow-lg);
+}
+
+.sidebarInset {
+  border-right: none;
+  background: var(--color-bg-secondary);
+}
+
+/* Sidebar Sides */
+.sideLeft {
+  /* Default left side */
+}
+
+.sideRight {
+  border-right: none;
+  border-left: 1px solid var(--color-border-primary);
+}
+
+/* Collapsed State */
+.collapsed {
+  width: var(--sidebar-width-icon, 3rem);
+}
+
+/* Mobile States */
+.offcanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  height: 100vh;
+  transform: translateX(-100%);
+  box-shadow: var(--shadow-xl);
+}
+
+.mobileOpen {
+  transform: translateX(0);
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: var(--color-bg-overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-normal);
+}
+
+.overlay[data-state="open"] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Sidebar Trigger */
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-md);
+  background: transparent;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.trigger:hover {
+  background: var(--color-interactive-secondary);
+  color: var(--color-text-primary);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Sidebar Rail */
+.rail {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  background: transparent;
+  border: none;
+  cursor: col-resize;
+  transition: background-color var(--transition-fast);
+}
+
+.rail:hover {
+  background: var(--color-border-primary);
+}
+
+/* Sidebar Inset */
+.inset {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Sidebar Header */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border-bottom: 1px solid var(--color-border-primary);
+}
+
+/* Sidebar Footer */
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border-top: 1px solid var(--color-border-primary);
+}
+
+/* Sidebar Content */
+.content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--space-md);
+}
+
+/* Sidebar Separator */
+.separator {
+  height: 1px;
+  background: var(--color-border-primary);
+  border: none;
+  margin: var(--space-md) 0;
+}
+
+/* Sidebar Group */
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.groupLabel {
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.groupAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.groupAction:hover {
+  background: var(--color-interactive-secondary);
+  color: var(--color-text-primary);
+}
+
+.groupContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+/* Sidebar Input */
+.input {
+  width: 100%;
+  padding: var(--space-input-y) var(--space-input-x);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-input);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 2px var(--color-focus-ring);
+}
+
+.input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Sidebar Menu */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menuItem {
+  position: relative;
+}
+
+/* Sidebar Menu Button */
+.menuButton {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+  text-align: left;
+}
+
+.menuButton:hover {
+  background: var(--color-interactive-secondary);
+  color: var(--color-text-primary);
+}
+
+.menuButton:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.menuButtonActive {
+  background: var(--color-menu-item-bg-active);
+  color: var(--color-menu-item-text-active);
+}
+
+.menuButtonActive:hover {
+  background: var(--color-menu-item-bg-active-hover);
+}
+
+/* All menu buttons use consistent padding from design tokens */
+.menuButtonSizeDefault,
+.menuButtonSizeSm,
+.menuButtonSizeLg {
+  padding: var(--space-sidebar-button-y) var(--space-sidebar-button-x);
+}
+
+/* Font size variants (only affects text, not spacing) */
+.menuButtonSizeDefault {
+  font-size: var(--font-size-sm);
+}
+
+.menuButtonSizeSm {
+  font-size: var(--font-size-xs);
+}
+
+.menuButtonSizeLg {
+  font-size: var(--font-size-base);
+}
+
+.menuButtonOutline {
+  border: 1px solid var(--color-border-primary);
+}
+
+/* Sidebar Menu Action */
+.menuAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.menuItem:hover .menuAction,
+.menuActionShowOnHover {
+  opacity: 1;
+}
+
+.menuAction:hover {
+  background: var(--color-interactive-secondary);
+  color: var(--color-text-primary);
+}
+
+/* Sidebar Menu Badge */
+.menuBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 var(--space-xs);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  color: var(--color-text-inverse);
+  background: var(--color-interactive-primary);
+  border-radius: var(--radius-full);
+}
+
+/* Sidebar Menu Skeleton */
+.menuSkeleton {
+  height: 2rem;
+  border-radius: var(--radius-md);
+  background: var(--color-bg-muted);
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.menuSkeletonWithIcon {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.menuSkeletonWithIcon::before {
+  content: "";
+  width: 1rem;
+  height: 1rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-secondary);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Sidebar Menu Sub */
+.menuSub {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  list-style: none;
+  margin: 0;
+  padding: var(--space-xs) 0 var(--space-xs) var(--space-lg);
+  border-left: 1px solid var(--color-border-muted);
+}
+
+.menuSubItem {
+  position: relative;
+}
+
+.menuSubButton {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.menuSubButton:hover {
+  background: var(--color-interactive-secondary);
+  color: var(--color-text-primary);
+}
+
+.menuSubButtonActive {
+  background: var(--color-menu-item-bg-active);
+  color: var(--color-menu-item-text-active);
+}
+
+.menuSubButtonActive:hover {
+  background: var(--color-menu-item-bg-active-hover);
+}
+
+/* Screen Reader Only */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Collapsed State Adjustments */
+
+/* Remove padding from all sections when collapsed */
+.sidebarBase[data-state="collapsed"] .header,
+.sidebarBase[data-state="collapsed"] .footer,
+.sidebarBase[data-state="collapsed"] .content,
+.sidebarBase[data-state="collapsed"] .group,
+.sidebarBase[data-state="collapsed"] .groupContent {
+  padding: 0;
+}
+
+/* Remove gap from sections when collapsed */
+.sidebarBase[data-state="collapsed"] .header,
+.sidebarBase[data-state="collapsed"] .footer,
+.sidebarBase[data-state="collapsed"] .group,
+.sidebarBase[data-state="collapsed"] .menu {
+  gap: 0;
+}
+
+/* Hide group labels when collapsed */
+.sidebarBase[data-state="collapsed"] .groupLabel {
+  display: none;
+}
+
+/* Hide submenus when collapsed */
+.sidebarBase[data-state="collapsed"] .menuSub {
+  display: none;
+}
+
+/* ============================================
+   CONSISTENT ICON/TEXT HANDLING FOR ALL SECTIONS
+   ============================================ */
+
+/* Menu Buttons: Center and show icons only */
+.sidebarBase[data-state="collapsed"] .menuButton {
+  justify-content: center;
+  padding: var(--space-sm);
+}
+
+/* Hide ALL text spans inside menu buttons (at any depth) */
+.sidebarBase[data-state="collapsed"] .menuButton span:not(.srOnly) {
+  display: none;
+}
+
+/* Hide text divs that don't contain icons (at any depth) */
+/* This handles text like "Acme Inc Enterprise" in header */
+.sidebarBase[data-state="collapsed"] .menuButton div:not(:has(svg)) {
+  display: none;
+}
+
+/* Keep icon containers visible */
+.sidebarBase[data-state="collapsed"] .menuButton div:has(svg) {
+  display: flex;
+}
+
+/* Ensure icons remain visible */
+.sidebarBase[data-state="collapsed"] .menuButton svg {
+  display: block;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 767px) {
+  .sidebarBase {
+    width: var(--sidebar-width-mobile, 18rem);
+  }
+}
+

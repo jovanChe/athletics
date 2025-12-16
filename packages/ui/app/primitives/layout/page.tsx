@@ -24,7 +24,6 @@ import {
 } from "../../../src";
 
 export default function LayoutPage() {
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-xl)" }}>
@@ -118,65 +117,6 @@ export default function LayoutPage() {
         </Box>
       </Section>
 
-      {/* Sidebar Example */}
-      <Section size="sm">
-        <h2 style={{ fontSize: "var(--font-size-lg)", margin: 0, marginBottom: "var(--space-md)" }}>
-          Sidebar Component
-        </h2>
-        <Box height="300px" border="1px solid var(--color-border-primary)" borderRadius="var(--radius-md)" overflow="hidden">
-          <Flex height="100%">
-            <Sidebar
-              side="left"
-              width="200px"
-              collapsible
-              collapsed={sidebarCollapsed}
-              onCollapseChange={setSidebarCollapsed}
-            >
-              <Box p={4}>
-                <Flex direction="column" gap={2}>
-                  <SidebarTrigger>
-                    {sidebarCollapsed ? "→" : "←"}
-                  </SidebarTrigger>
-                  <MenuItem
-                    collapsed={sidebarCollapsed}
-                    icon={<Icons.Dashboard />}
-                    active
-                  >
-                    Dashboard
-                  </MenuItem>
-                  <MenuItem
-                    collapsed={sidebarCollapsed}
-                    icon={<Icons.Users />}
-                  >
-                    Users
-                  </MenuItem>
-                  <MenuItem
-                    collapsed={sidebarCollapsed}
-                    icon={<Icons.Settings />}
-                    badge="3"
-                  >
-                    Settings
-                  </MenuItem>
-                  <MenuItem
-                    collapsed={sidebarCollapsed}
-                    icon={<Icons.Analytics />}
-                  >
-                    Analytics
-                  </MenuItem>
-                </Flex>
-              </Box>
-            </Sidebar>
-            <SidebarContent>
-              <Box p={4}>
-                <h3 style={{ margin: 0, marginBottom: "var(--space-md)" }}>Main Content</h3>
-                <p style={{ margin: 0 }}>
-                  This is the main content area. The sidebar can be collapsed and expanded.
-                </p>
-              </Box>
-            </SidebarContent>
-          </Flex>
-        </Box>
-      </Section>
 
       {/* Table Examples */}
       <Section size="sm">
