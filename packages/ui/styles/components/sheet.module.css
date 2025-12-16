@@ -52,6 +52,7 @@
 }
 
 .content--right {
+  top: 0;
   right: 0;
   border-left: 1px solid var(--color-border-primary);
   border-radius: var(--radius-lg) 0 0 var(--radius-lg);
@@ -80,6 +81,7 @@
 }
 
 .content--left {
+  top: 0;
   left: 0;
   border-right: 1px solid var(--color-border-primary);
   border-radius: 0 var(--radius-lg) var(--radius-lg) 0;

@@ -173,7 +173,7 @@ function SimpleSidebar() {
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton asChild tooltip={item.title}>
                     <a href={item.url}>
                       <item.icon size={16} />
                       <span>{item.title}</span>
@@ -227,7 +227,7 @@ function SidebarWithSubmenus() {
           <SidebarMenu>
             {navMain.map((item) => (
               <SidebarMenuItem key={item.title}>
-                <SidebarMenuButton asChild>
+                <SidebarMenuButton asChild tooltip={item.title}>
                   <a href={item.url} style={{ fontWeight: "var(--font-weight-medium)" }}>
                     {item.icon && <item.icon size={16} />}
                     <span>{item.title}</span>
@@ -291,7 +291,7 @@ function FloatingSidebar() {
           <SidebarMenu style={{ gap: "var(--space-sm)" }}>
             {navMain.map((item) => (
               <SidebarMenuItem key={item.title}>
-                <SidebarMenuButton asChild>
+                <SidebarMenuButton asChild tooltip={item.title}>
                   <a href={item.url} style={{ fontWeight: "var(--font-weight-medium)" }}>
                     {item.icon && <item.icon size={16} />}
                     <span>{item.title}</span>

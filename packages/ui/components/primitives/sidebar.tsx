@@ -5,6 +5,8 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { PanelLeft } from "lucide-react";
 import { cn } from "../utilities/cn";
+import { Sheet, SheetContent, SheetTitle } from "./sheet";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./tooltip";
 import styles from "../../styles/components/sidebar.module.css";
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state";
@@ -14,12 +16,25 @@ const SIDEBAR_WIDTH_MOBILE = "18rem";
 const SIDEBAR_WIDTH_ICON = "3rem";
 const SIDEBAR_KEYBOARD_SHORTCUT = "b";
 
+function getCookie(name: string) {
+  if (typeof document === "undefined") return null;
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length !== 2) return null;
+  return parts.pop()!.split(";").shift() ?? null;
+}
+
+function setCookie(name: string, value: string, maxAgeSeconds: number) {
+  if (typeof document === "undefined") return;
+  document.cookie = `${name}=${value}; path=/; max-age=${maxAgeSeconds}`;
+}
+
 type SidebarContext = {
   state: "expanded" | "collapsed";
   open: boolean;
   setOpen: (open: boolean) => void;
   openMobile: boolean;
-  setOpenMobile: (open: boolean) => void;
+  setOpenMobile: React.Dispatch<React.SetStateAction<boolean>>;
   isMobile: boolean;
   toggleSidebar: () => void;
 };
@@ -70,6 +85,33 @@ const SidebarProvider = React.forwardRef<
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  // Keep mobile sheet closed when switching to desktop.
+  React.useEffect(() => {
+    if (!isMobile && openMobile) setOpenMobile(false);
+  }, [isMobile, openMobile]);
+
+  // Cookie persistence (shadcn-style)
+  React.useEffect(() => {
+    const cookie = getCookie(SIDEBAR_COOKIE_NAME);
+    if (!cookie) return;
+
+    const normalized = cookie.toLowerCase();
+    const nextOpen =
+      normalized === "expanded" ||
+      normalized === "open" ||
+      normalized === "true" ||
+      normalized === "1";
+
+    // Only set internal state if uncontrolled; still allow cookie writing even if controlled.
+    if (openProp === undefined) {
+      _setOpen(nextOpen);
+    }
+  }, [openProp]);
+
+  React.useEffect(() => {
+    setCookie(SIDEBAR_COOKIE_NAME, open ? "expanded" : "collapsed", SIDEBAR_COOKIE_MAX_AGE);
+  }, [open]);
+
   // Keyboard shortcut
   React.useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -109,6 +151,7 @@ const SidebarProvider = React.forwardRef<
         style={
           {
             "--sidebar-width": SIDEBAR_WIDTH,
+            "--sidebar-width-mobile": SIDEBAR_WIDTH_MOBILE,
             "--sidebar-width-icon": SIDEBAR_WIDTH_ICON,
             ...style,
           } as React.CSSProperties
@@ -148,46 +191,41 @@ const Sidebar = React.forwardRef<
     }
 >(({ variant, side, collapsible = "icon", className, children, ...props }, ref) => {
   const { state, isMobile, openMobile, setOpenMobile } = useSidebar();
-  const [isMounted, setIsMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return null;
-  }
 
   const isCollapsed = state === "collapsed";
-  const isMobileOpen = isMobile && openMobile;
+
+  const sidebarNode = (
+    <div
+      ref={ref}
+      className={cn(
+        styles.sidebarBase,
+        sidebarVariants({ variant, side }),
+        collapsible === "icon" && isCollapsed && styles.collapsed,
+        className
+      )}
+      data-state={state}
+      data-collapsible={collapsible}
+      data-mobile={isMobile}
+      data-variant={variant ?? "sidebar"}
+      data-side={side ?? "left"}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+
+  if (!isMobile) return sidebarNode;
 
   return (
-    <>
-      {isMobile && (
-        <div
-          className={styles.overlay}
-          data-state={isMobileOpen ? "open" : "closed"}
-          onClick={() => setOpenMobile(false)}
-        />
-      )}
-      <div
-        ref={ref}
-        className={cn(
-          styles.sidebarBase,
-          sidebarVariants({ variant, side }),
-          collapsible === "icon" && isCollapsed && styles.collapsed,
-          collapsible === "offcanvas" && isMobile && styles.offcanvas,
-          isMobileOpen && styles.mobileOpen,
-          className
-        )}
-        data-state={state}
-        data-collapsible={collapsible}
-        data-mobile={isMobile}
-        {...props}
+    <Sheet open={openMobile} onOpenChange={setOpenMobile}>
+      <SheetContent
+        side={side === "right" ? "right" : "left"}
+        className={styles.sidebarSheetContent}
       >
-        {children}
-      </div>
-    </>
+        <SheetTitle className={styles.srOnly}>Navigation</SheetTitle>
+        {sidebarNode}
+      </SheetContent>
+    </Sheet>
   );
 });
 Sidebar.displayName = "Sidebar";
@@ -200,7 +238,7 @@ const SidebarTrigger = React.forwardRef<
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (isMobile) {
-      setOpenMobile(false);
+      setOpenMobile((value) => !value);
     } else {
       toggleSidebar();
     }
@@ -398,7 +436,7 @@ const SidebarMenuButton = React.forwardRef<
   const { isMobile, state } = useSidebar();
   const isCollapsed = state === "collapsed" && !isMobile;
 
-  return (
+  const buttonNode = (
     <Comp
       ref={ref}
       className={cn(
@@ -409,6 +447,22 @@ const SidebarMenuButton = React.forwardRef<
       data-active={isActive}
       {...props}
     />
+  );
+
+  if (!tooltip || !isCollapsed) return buttonNode;
+
+  const tooltipProps = typeof tooltip === "string" ? {} : tooltip;
+  const tooltipLabel = typeof tooltip === "string" ? tooltip : tooltip.children;
+
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>{buttonNode}</TooltipTrigger>
+        <TooltipContent side="right" align="center" sideOffset={8} {...tooltipProps}>
+          {tooltipLabel}
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   );
 });
 SidebarMenuButton.displayName = "SidebarMenuButton";

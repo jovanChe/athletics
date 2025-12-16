@@ -1,5 +1,11 @@
 "use client";
 
+/**
+ * @deprecated Prefer the shadcn-compatible primitives in
+ * `packages/ui/components/primitives/sidebar.tsx`.
+ *
+ * This layout-level Sidebar is kept for backwards compatibility.
+ */
 import * as React from "react";
 import { Box, BoxProps } from "./box";
 import { cn } from "../utilities/cn";
