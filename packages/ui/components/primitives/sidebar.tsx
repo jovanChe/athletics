@@ -189,10 +189,12 @@ const Sidebar = React.forwardRef<
     VariantProps<typeof sidebarVariants> & {
       collapsible?: "offcanvas" | "icon" | "none";
     }
->(({ variant, side, collapsible = "icon", className, children, ...props }, ref) => {
+>(({ variant, side, collapsible = "offcanvas", className, children, ...props }, ref) => {
   const { state, isMobile, openMobile, setOpenMobile } = useSidebar();
 
   const isCollapsed = state === "collapsed";
+  const isIconMode = collapsible === "icon";
+  const isOffcanvasMode = collapsible === "offcanvas";
 
   const sidebarNode = (
     <div
@@ -200,7 +202,10 @@ const Sidebar = React.forwardRef<
       className={cn(
         styles.sidebarBase,
         sidebarVariants({ variant, side }),
-        collapsible === "icon" && isCollapsed && styles.collapsed,
+        // Icon mode: show icons when collapsed
+        isIconMode && isCollapsed && styles.collapsed,
+        // Offcanvas mode: hide completely when collapsed (on desktop)
+        isOffcanvasMode && isCollapsed && !isMobile && styles.hidden,
         className
       )}
       data-state={state}

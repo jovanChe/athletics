@@ -137,7 +137,7 @@ function SimpleSidebar() {
   ];
 
   return (
-    <Sidebar>
+    <Sidebar collapsible="icon">
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
@@ -193,7 +193,7 @@ function SimpleSidebar() {
 // Sidebar with Submenus (Variant 3)
 function SidebarWithSubmenus() {
   return (
-    <Sidebar>
+    <Sidebar collapsible="icon">
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
@@ -320,7 +320,7 @@ function FloatingSidebar() {
 // Collapsible Sidebar (Variant 5)
 function CollapsibleSidebar() {
   return (
-    <Sidebar>
+    <Sidebar collapsible="icon">
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
@@ -357,9 +357,9 @@ function CollapsibleSidebar() {
                 <SidebarMenuItem>
                   <CollapsibleTrigger asChild>
                     <SidebarMenuButton>
-                      {item.title}{" "}
-                      <Plus size={16} style={{ marginLeft: "auto", display: "block" }} />
-                      <Minus size={16} style={{ marginLeft: "auto", display: "none" }} />
+                      {item.icon && <item.icon size={16} />}
+                      <span>{item.title}</span>
+                      <ChevronRight size={16} style={{ marginLeft: "auto", transition: "transform 0.2s" }} />
                     </SidebarMenuButton>
                   </CollapsibleTrigger>
                   {item.items?.length ? (
@@ -389,7 +389,7 @@ function CollapsibleSidebar() {
 // Inset Sidebar (Variant 8)
 function InsetSidebar() {
   return (
-    <Sidebar variant="inset">
+    <Sidebar variant="inset" collapsible="icon">
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>

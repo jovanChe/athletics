@@ -9,6 +9,7 @@
 - Dropdown Menu
 - Table
 - Icon/Icons
+- Sidebar ⚠️ (Partially implemented)
 
 ---
 
@@ -150,8 +151,8 @@
 ### Sidebar Blocks
 - Badge ✅ (Tier 1)
 - Separator ✅ (Tier 1)
-- Collapsible (Tier 5)
-- Sidebar (Tier 5)
+- Collapsible ✅ (Tier 5)
+- Sidebar ⚠️ (Tier 5) - Partially implemented, needs refinement
 
 ### Login Blocks
 - Label ✅ (Tier 1)

@@ -45,9 +45,19 @@
   border-left: 1px solid var(--color-border-primary);
 }
 
-/* Collapsed State */
+/* Collapsed State - Icon Mode */
 .collapsed {
   width: var(--sidebar-width-icon, 3rem);
+}
+
+/* Hidden State - Offcanvas Mode (fully hide when collapsed) */
+.hidden {
+  width: 0;
+  min-width: 0;
+  overflow: hidden;
+  border-width: 0;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* Mobile States */
@@ -439,6 +449,12 @@
   background: var(--color-menu-item-bg-active-hover);
 }
 
+/* Collapsible chevron rotation - rotate chevron when collapsible is open */
+/* Radix Collapsible sets data-state on the root element */
+[data-state="open"] .menuItem .menuButton svg:last-child {
+  transform: rotate(90deg);
+}
+
 /* Screen Reader Only */
 .srOnly {
   position: absolute;
@@ -452,64 +468,62 @@
   border-width: 0;
 }
 
-/* Collapsed State Adjustments */
-
-/* Remove padding from all sections when collapsed */
-.sidebarBase[data-state="collapsed"] .header,
-.sidebarBase[data-state="collapsed"] .footer,
-.sidebarBase[data-state="collapsed"] .content,
-.sidebarBase[data-state="collapsed"] .group,
-.sidebarBase[data-state="collapsed"] .groupContent {
+/* Collapsed State Adjustments - Only apply when in icon mode */
+.sidebarBase[data-state="collapsed"][data-collapsible="icon"] .header,
+.sidebarBase[data-state="collapsed"][data-collapsible="icon"] .footer,
+.sidebarBase[data-state="collapsed"][data-collapsible="icon"] .content,
+.sidebarBase[data-state="collapsed"][data-collapsible="icon"] .group,
+.sidebarBase[data-state="collapsed"][data-collapsible="icon"] .groupContent {
   padding: 0;
 }
 
-/* Remove gap from sections when collapsed */
-.sidebarBase[data-state="collapsed"] .header,
-.sidebarBase[data-state="collapsed"] .footer,
-.sidebarBase[data-state="collapsed"] .group,
-.sidebarBase[data-state="collapsed"] .menu {
+/* Remove gap from sections when collapsed (icon mode only) */
+.sidebarBase[data-state="collapsed"][data-collapsible="icon"] .header,
+.sidebarBase[data-state="collapsed"][data-collapsible="icon"] .footer,
+.sidebarBase[data-state="collapsed"][data-collapsible="icon"] .group,
+.sidebarBase[data-state="collapsed"][data-collapsible="icon"] .menu {
   gap: 0;
 }
 
-/* Hide group labels when collapsed */
-.sidebarBase[data-state="collapsed"] .groupLabel {
+/* Hide group labels when collapsed (icon mode only) */
+.sidebarBase[data-state="collapsed"][data-collapsible="icon"] .groupLabel {
   display: none;
 }
 
-/* Hide submenus when collapsed */
-.sidebarBase[data-state="collapsed"] .menuSub {
+/* Hide submenus when collapsed (icon mode only) - but allow CollapsibleContent to control visibility */
+.sidebarBase[data-state="collapsed"][data-collapsible="icon"] .menuSub {
   display: none;
 }
 
 /* ============================================
-   CONSISTENT ICON/TEXT HANDLING FOR ALL SECTIONS
+   CONSISTENT ICON/TEXT HANDLING FOR ALL SECTIONS (icon mode only)
    ============================================ */
 
-/* Menu Buttons: Center and show icons only */
-.sidebarBase[data-state="collapsed"] .menuButton {
+/* Menu Buttons: Center and show icons only (icon mode only) */
+.sidebarBase[data-state="collapsed"][data-collapsible="icon"] .menuButton {
   justify-content: center;
   gap: 0;
   padding: var(--space-sm);
 }
 
-/* Hide ALL text spans inside menu buttons (at any depth) */
-.sidebarBase[data-state="collapsed"] .menuButton span:not(.srOnly) {
+/* Hide ALL text spans inside menu buttons (at any depth) - icon mode only */
+.sidebarBase[data-state="collapsed"][data-collapsible="icon"] .menuButton span:not(.srOnly) {
   display: none;
 }
 
-/* Hide text divs that don't contain icons (at any depth) */
+/* Hide text divs that don't contain icons (at any depth) - icon mode only */
 /* This handles text like "Acme Inc Enterprise" in header */
-.sidebarBase[data-state="collapsed"] .menuButton div:not(:has(svg)) {
+.sidebarBase[data-state="collapsed"][data-collapsible="icon"] .menuButton div:not(:has(svg)) {
   display: none;
 }
 
-/* Keep icon containers visible */
-.sidebarBase[data-state="collapsed"] .menuButton div:has(svg) {
+/* Keep icon containers visible - icon mode only */
+.sidebarBase[data-state="collapsed"][data-collapsible="icon"] .menuButton div:has(svg) {
   display: flex;
 }
 
-/* Ensure icons remain visible */
-.sidebarBase[data-state="collapsed"] .menuButton svg {
+/* Ensure icons remain visible - icon mode only */
+.sidebarBase[data-state="collapsed"][data-collapsible="icon"] .menuButton svg {
   display: block;
 }
 
