@@ -197,4 +197,34 @@ export { Progress } from './progress';
 export { Toaster } from './sonner';
 
 export { Collapsible, CollapsibleTrigger, CollapsibleContent } from './collapsible';
+
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './accordion';
+
+export { HoverCard, HoverCardTrigger, HoverCardContent } from './hover-card';
+
+export { ScrollArea, ScrollBar } from './scroll-area';
+
+export { Calendar } from './calendar';
+export type { CalendarProps } from './calendar';
+
+export { DatePicker } from './date-picker';
+export type { DatePickerProps } from './date-picker';
+
+export { DateRangePicker } from './date-range-picker';
+export type { DateRangePickerProps, DateRange } from './date-range-picker';
+
+export {
+  Command,
+  CommandDialog,
+  CommandInput,
+  CommandList,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
+  CommandShortcut,
+  CommandSeparator,
+} from './command';
+
+export { ResizablePanelGroup, ResizablePanel, ResizableHandle } from './resizable';
+
 export { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupAction, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarInput, SidebarInset, SidebarMenu, SidebarMenuAction, SidebarMenuBadge, SidebarMenuButton, SidebarMenuItem, SidebarMenuSkeleton, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem, SidebarProvider, SidebarRail, SidebarSeparator, SidebarTrigger, useSidebar } from './sidebar';

@@ -1,0 +1,416 @@
+/* Calendar Root */
+.calendar {
+  --cell-size: 2.25rem;
+  padding: var(--space-sm);
+  background: var(--color-bg-primary);
+}
+
+.root {
+  width: fit-content;
+}
+
+/* Months Container */
+.months {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .months {
+    flex-direction: row;
+    gap: var(--space-lg);
+  }
+}
+
+.month {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: var(--space-md);
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  gap: var(--space-xs);
+}
+
+.navButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--cell-size);
+  height: var(--cell-size);
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.navButton:hover {
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+}
+
+.navButton:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.navButton[aria-disabled="true"],
+.navButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.navButtonPrevious {
+  /* Positioned by nav flex */
+}
+
+.navButtonNext {
+  /* Positioned by nav flex */
+}
+
+/* Caption / Header */
+.monthCaption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--cell-size);
+  width: 100%;
+  padding: 0 var(--cell-size);
+  position: relative;
+}
+
+.captionLabel {
+  font-weight: var(--font-weight-medium);
+  user-select: none;
+}
+
+.captionLabelOnly {
+  font-size: var(--font-size-sm);
+}
+
+.captionLabelDropdown {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  height: 2rem;
+  padding-left: var(--space-sm);
+  padding-right: var(--space-xs);
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-md);
+}
+
+.captionLabelDropdown svg {
+  width: 0.875rem;
+  height: 0.875rem;
+  color: var(--color-text-tertiary);
+}
+
+/* Dropdowns Container */
+.dropdowns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: var(--cell-size);
+  gap: var(--space-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Dropdown Root (wrapper for each select) */
+.dropdownRoot {
+  position: relative;
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.dropdownRoot:hover {
+  border-color: var(--color-border-secondary);
+}
+
+.dropdownRoot:focus-within {
+  border-color: var(--color-focus);
+  box-shadow: 0 0 0 3px rgba(var(--color-focus-rgb, 59, 130, 246), 0.2);
+}
+
+/* The actual select element (hidden visually but functional) */
+.dropdown {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.monthsDropdown,
+.yearsDropdown {
+  /* Additional styles if needed */
+}
+
+/* Chevrons */
+.chevron {
+  width: 1rem;
+  height: 1rem;
+}
+
+.chevronDown {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+/* Month Grid (table) */
+.monthGrid {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Weekdays Header */
+.weekdays {
+  display: flex;
+}
+
+.weekday {
+  flex: 1;
+  width: var(--cell-size);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text-secondary);
+  text-align: center;
+  border-radius: var(--radius-md);
+  user-select: none;
+}
+
+/* Week Number Header */
+.weekNumberHeader {
+  width: var(--cell-size);
+  user-select: none;
+}
+
+/* Week Rows */
+.week {
+  display: flex;
+  width: 100%;
+  margin-top: var(--space-xs);
+}
+
+/* Week Number */
+.weekNumber {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  user-select: none;
+}
+
+.weekNumberCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--cell-size);
+  height: var(--cell-size);
+  text-align: center;
+}
+
+/* Day Cells */
+.day {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  text-align: center;
+  aspect-ratio: 1;
+  user-select: none;
+}
+
+.dayWithoutWeekNumber,
+.dayWithWeekNumber {
+  /* Base class for specificity */
+}
+
+/* Day Button - Base styles */
+.dayButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: var(--space-xs);
+  width: 100%;
+  min-width: var(--cell-size);
+  height: auto;
+  aspect-ratio: 1;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-md);
+  background-color: transparent;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: 1;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.dayButton:hover {
+  background-color: var(--color-bg-secondary);
+}
+
+.dayButton:focus-visible {
+  position: relative;
+  z-index: 10;
+  outline: 2px solid var(--color-focus);
+  outline-offset: -2px;
+}
+
+/* ===== STATE STYLES - Higher specificity ===== */
+
+/* Today */
+.today .dayButton {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Selected Single - using both class and aria-selected for specificity */
+.selected .dayButton {
+  background-color: var(--color-primary) !important;
+  color: var(--color-primary-text) !important;
+  font-weight: var(--font-weight-medium);
+}
+
+.selected .dayButton:hover {
+  background-color: var(--color-primary-hover) !important;
+}
+
+/* Range Start */
+.rangeStart .dayButton {
+  background-color: var(--color-primary) !important;
+  color: var(--color-primary-text) !important;
+  border-radius: var(--radius-md);
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* Range End */
+.rangeEnd .dayButton {
+  background-color: var(--color-primary) !important;
+  color: var(--color-primary-text) !important;
+  border-radius: var(--radius-md);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* Range Middle */
+.rangeMiddle .dayButton {
+  background-color: var(--color-bg-tertiary) !important;
+  color: var(--color-text-primary) !important;
+  border-radius: 0;
+}
+
+/* When range start and end are same day */
+.rangeStart.rangeEnd .dayButton {
+  border-radius: var(--radius-md);
+}
+
+/* Range background fill on day cell for visual connection */
+.rangeStart {
+  background: linear-gradient(to right, transparent 50%, var(--color-bg-tertiary) 50%);
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+}
+
+.rangeEnd {
+  background: linear-gradient(to left, transparent 50%, var(--color-bg-tertiary) 50%);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.rangeMiddle {
+  background-color: var(--color-bg-tertiary);
+  border-radius: 0;
+}
+
+/* Clear background when start equals end */
+.rangeStart.rangeEnd {
+  background: transparent;
+  border-radius: var(--radius-md);
+}
+
+/* Outside days */
+.outside .dayButton {
+  color: var(--color-text-tertiary);
+  opacity: 0.5;
+}
+
+/* Disabled */
+.disabled .dayButton {
+  color: var(--color-text-tertiary);
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Hidden */
+.hidden {
+  visibility: hidden;
+}
+
+/* Focus states for better accessibility */
+.day:focus-within {
+  position: relative;
+  z-index: 10;
+}
+
+/* Multiple months - adjust navigation visibility */
+.months:has(.month:nth-child(2)) .month:not(:first-child) .nav {
+  display: none;
+}
+
+/* ===== DATA ATTRIBUTE FALLBACKS ===== */
+/* These ensure styling works even if class-based styling fails */
+
+.dayButton[data-selected-single="true"] {
+  background-color: var(--color-primary) !important;
+  color: var(--color-primary-text) !important;
+}
+
+.dayButton[data-range-start="true"] {
+  background-color: var(--color-primary) !important;
+  color: var(--color-primary-text) !important;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.dayButton[data-range-end="true"] {
+  background-color: var(--color-primary) !important;
+  color: var(--color-primary-text) !important;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.dayButton[data-range-middle="true"] {
+  background-color: var(--color-bg-tertiary) !important;
+  color: var(--color-text-primary) !important;
+  border-radius: 0;
+}
+
+/* Hover states for selected buttons */
+.dayButton[data-selected-single="true"]:hover,
+.dayButton[data-range-start="true"]:hover,
+.dayButton[data-range-end="true"]:hover {
+  background-color: var(--color-primary-hover) !important;
+}

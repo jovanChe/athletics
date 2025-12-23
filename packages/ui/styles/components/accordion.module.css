@@ -1,0 +1,85 @@
+/* Accordion Root - no styles needed, just a wrapper */
+
+.item {
+  border-bottom: 1px solid var(--color-border-primary);
+}
+
+.header {
+  display: flex;
+}
+
+.trigger {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-align: left;
+}
+
+.trigger:hover {
+  text-decoration: underline;
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.trigger[data-state="open"] .icon {
+  transform: rotate(180deg);
+}
+
+.icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  transition: transform var(--transition-normal);
+  color: var(--color-text-secondary);
+}
+
+.content {
+  overflow: hidden;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  transition: height var(--transition-normal);
+}
+
+.content[data-state="open"] {
+  animation: slideDown var(--transition-normal);
+}
+
+.content[data-state="closed"] {
+  animation: slideUp var(--transition-normal);
+}
+
+.contentInner {
+  padding-bottom: var(--space-md);
+}
+
+@keyframes slideDown {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+

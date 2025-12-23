@@ -1,6 +1,8 @@
 # shadcn/ui Component Onboarding Priority
 
 ## Current Components ✅
+
+### Core Components (Pre-existing)
 - Button
 - Dialog
 - Input
@@ -9,7 +11,25 @@
 - Dropdown Menu
 - Table
 - Icon/Icons
-- Sidebar ⚠️ (Partially implemented)
+- Menu Item
+
+### Tier 1-4 Components (All Complete)
+- Label, Card, Separator, Badge, Textarea, Checkbox, Radio Group
+- Form, Switch, Slider, Alert, Alert Dialog
+- Tabs, Breadcrumb, Pagination, Tooltip, Popover
+- Sheet, Drawer, Skeleton, Progress, Toast/Sonner
+
+### Tier 5 Components (All Complete)
+- Accordion ✅
+- Calendar ✅ (with dropdown month/year, multiple months, week numbers)
+- DatePicker ✅ (Calendar in Popover)
+- DateRangePicker ✅ (Range Calendar in Popover)
+- Command ✅
+- Hover Card ✅
+- Scroll Area ✅
+- Resizable ✅
+- Collapsible ✅
+- Sidebar ⚠️ (Partially implemented, needs refinement)
 
 ---
 
@@ -87,43 +107,55 @@
 
 ## Implementation Strategy
 
-### Phase 1: Foundation (Week 1)
-- [ ] Label
-- [ ] Card
-- [ ] Separator
-- [ ] Badge
-- [ ] Textarea
-- [ ] Checkbox
-- [ ] Radio Group
+### Phase 1: Foundation (Week 1) ✅ COMPLETE
+- [x] Label
+- [x] Card
+- [x] Separator
+- [x] Badge
+- [x] Textarea
+- [x] Checkbox
+- [x] Radio Group
 
 **Goal:** Can build basic forms and card layouts
 
-### Phase 2: Complete Forms (Week 2)
-- [ ] Form
-- [ ] Switch
-- [ ] Slider
-- [ ] Alert
-- [ ] Alert Dialog
+### Phase 2: Complete Forms (Week 2) ✅ COMPLETE
+- [x] Form
+- [x] Switch
+- [x] Slider
+- [x] Alert
+- [x] Alert Dialog
 
 **Goal:** Can build complete, validated forms with feedback
 
-### Phase 3: Navigation (Week 3)
-- [ ] Tabs
-- [ ] Breadcrumb
-- [ ] Pagination
-- [ ] Tooltip
-- [ ] Popover
+### Phase 3: Navigation (Week 3) ✅ COMPLETE
+- [x] Tabs
+- [x] Breadcrumb
+- [x] Pagination
+- [x] Tooltip
+- [x] Popover
 
 **Goal:** Can build complex navigation patterns
 
-### Phase 4: Polish (Week 4)
-- [ ] Sheet
-- [ ] Drawer
-- [ ] Skeleton
-- [ ] Progress
-- [ ] Toast/Sonner
+### Phase 4: Polish (Week 4) ✅ COMPLETE
+- [x] Sheet
+- [x] Drawer
+- [x] Skeleton
+- [x] Progress
+- [x] Toast/Sonner
 
 **Goal:** Production-ready UX with loading states and notifications
+
+### Phase 5: Advanced Features ✅ COMPLETE
+- [x] Accordion
+- [x] Calendar
+- [x] Command
+- [x] Hover Card
+- [x] Scroll Area
+- [x] Resizable
+- [x] Collapsible
+- [x] Sidebar (Partially implemented, needs refinement)
+
+**Goal:** All advanced components implemented
 
 ---
 
@@ -163,7 +195,17 @@
 - Form ✅ (Tier 2)
 
 ### Calendar Blocks
-- Calendar (Tier 5)
-- Popover (Tier 3)
+- Calendar ✅ (Tier 5) - Full implementation with:
+  - Single/multiple/range selection
+  - Month/year dropdown (`captionLayout="dropdown"`)
+  - Navigation arrows
+  - Multiple months view
+  - Week numbers
+  - Disabled dates
+- DatePicker ✅ (Calendar + Popover + Button)
+- DateRangePicker ✅ (Range Calendar + Popover + Button)
+- Popover ✅ (Tier 3)
 - Button ✅ (Done)
+
+**Note:** Persian/Hijri calendar support available via react-day-picker/persian import
 
