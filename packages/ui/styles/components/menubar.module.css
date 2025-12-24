@@ -20,28 +20,28 @@
   justify-content: center;
   height: 2rem;
   padding: 0 var(--space-sm);
-  
+
   font-family: var(--font-family-base);
   font-size: var(--font-size-sm);
   font-weight: 500;
   color: var(--color-text-primary);
-  
+
   background: transparent;
   border: none;
   border-radius: var(--radius-sm);
   cursor: pointer;
   outline: none;
   transition: var(--transition-fast);
-  
+
   &:hover {
     background: var(--color-bg-secondary);
   }
-  
+
   &:focus-visible {
     outline: 2px solid var(--color-border-focus);
     outline-offset: 2px;
   }
-  
+
   &[data-state="open"] {
     background: var(--color-bg-secondary);
   }
@@ -52,12 +52,12 @@
   min-width: 12rem;
   overflow: hidden;
   padding: var(--space-xs);
-  
+
   background: var(--color-bg-primary);
   border: 1px solid var(--color-border-primary);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
-  
+
   z-index: 50;
   animation: menuIn 0.15s ease-out;
 }
@@ -79,21 +79,21 @@
   align-items: center;
   gap: var(--space-sm);
   padding: var(--space-sm) var(--space-md);
-  
+
   font-size: var(--font-size-sm);
   color: var(--color-text-primary);
-  
+
   border-radius: var(--radius-sm);
   cursor: default;
   user-select: none;
   outline: none;
   transition: var(--transition-fast);
-  
+
   &:focus,
   &[data-highlighted] {
     background: var(--color-bg-secondary);
   }
-  
+
   &[data-disabled] {
     opacity: 0.5;
     pointer-events: none;
@@ -106,16 +106,16 @@
   align-items: center;
   gap: var(--space-sm);
   padding: var(--space-sm) var(--space-md);
-  
+
   font-size: var(--font-size-sm);
   color: var(--color-text-primary);
-  
+
   border-radius: var(--radius-sm);
   cursor: default;
   user-select: none;
   outline: none;
   transition: var(--transition-fast);
-  
+
   &:focus,
   &[data-highlighted],
   &[data-state="open"] {
@@ -135,21 +135,21 @@
   gap: var(--space-sm);
   padding: var(--space-sm) var(--space-md);
   padding-left: var(--space-2xl);
-  
+
   font-size: var(--font-size-sm);
   color: var(--color-text-primary);
-  
+
   border-radius: var(--radius-sm);
   cursor: default;
   user-select: none;
   outline: none;
   transition: var(--transition-fast);
-  
+
   &:focus,
   &[data-highlighted] {
     background: var(--color-bg-secondary);
   }
-  
+
   &[data-disabled] {
     opacity: 0.5;
     pointer-events: none;

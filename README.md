@@ -1,216 +1,165 @@
-# Athletics - Next.js Auth Boilerplate
+# Athletics Auth Boilerplate
 
-A production-ready Next.js monorepo with authentication, role-based access control, and MongoDB integration. Built with Turborepo for scalability and reusability.
+A production-ready Next.js monorepo with authentication, role-based access control, and a complete UI component library.
 
-## 🚀 Features
+## ✨ Features
 
-- **🔐 Authentication System**
-  - JWT-based authentication with secure cookies
-  - Sign-up, sign-in, and sign-out functionality
-  - Password hashing with bcrypt
-  - Role-based access control (user, admin, superAdmin)
+### 🔐 Authentication & Authorization
+- JWT-based authentication with httpOnly cookies
+- Role-based access control (user, admin, superAdmin)
+- Protected routes with middleware
+- Secure password hashing
 
-- **👥 User Management**
-  - User registration and profile management
-  - Admin panel for user management
-  - Role assignment and updates
-  - Secure API endpoints with authorization
+### 🎨 Complete UI Library
+- **60+ components** based on shadcn/ui
+- CSS Modules + Design Tokens architecture
+- Multiple theme support
+- Fully accessible (Radix UI primitives)
+- Production-ready components:
+  - Forms, Data Tables, Charts
+  - Dialogs, Sheets, Popovers
+  - Navigation, Tabs, Sidebar
+  - Calendar, Date Pickers
+  - And much more...
 
-- **🏗️ Architecture**
-  - Monorepo structure with Turborepo
-  - Shared packages for auth, database, and UI
-  - TypeScript throughout
-  - MongoDB with Mongoose ODM
+### 👥 User Management
+- User registration and authentication
+- Admin panel for user management
+- Role assignment and updates
+- Profile management
 
-- **🎨 UI/UX**
-  - Responsive design with Tailwind CSS
-  - Role-based dashboard content
-  - Admin user management interface
-  - Clean, modern UI components
+## 🚀 Quick Start
 
-## 📁 Project Structure
+### Prerequisites
+- Node.js 18+
+- pnpm
+- MongoDB
+
+### Installation
+
+```bash
+# Clone repository
+git clone https://github.com/jovanChe/athletics.git
+cd athletics
+
+# Install dependencies
+pnpm install
+
+# Set up environment variables
+cp apps/web/.env.example apps/web/.env
+# Edit .env with your MongoDB URI and secrets
+
+# Run development servers
+pnpm dev
+```
+
+### Create SuperAdmin
+
+```bash
+pnpm --filter web tsx scripts/seed.ts
+```
+
+### Access
+
+- **Main App**: http://localhost:3000
+- **UI Library**: http://localhost:3001
+- **Docs**: http://localhost:3002
+
+## 📦 Monorepo Structure
 
 ```
 athletics/
 ├── apps/
-│   ├── web/                 # Main Next.js application
-│   │   ├── app/            # App Router pages
-│   │   ├── components/     # React components
-│   │   └── scripts/        # Database seeding
-│   └── docs/               # Documentation site
+│   ├── web/              # Main Next.js application (Port 3000)
+│   ├── docs/             # Documentation site (Port 3002)
+│   └── ui/               # UI component library (Port 3001)
 ├── packages/
-│   ├── auth/               # Authentication utilities
-│   ├── db/                 # Database models and connection
-│   ├── ui/                 # Shared UI components
-│   └── config/             # Shared configuration
-└── ROADMAP.md              # Development roadmap
+│   ├── auth/             # Authentication utilities
+│   ├── db/               # Database models
+│   ├── ui/               # 60+ UI components
+│   └── config/           # Shared configuration
 ```
 
 ## 🛠️ Tech Stack
 
 - **Framework**: Next.js 14 (App Router)
-- **Monorepo**: Turborepo
-- **Database**: MongoDB with Mongoose
-- **Authentication**: JWT with httpOnly cookies
-- **Styling**: Tailwind CSS
 - **Language**: TypeScript
+- **Database**: MongoDB with Mongoose
+- **Authentication**: JWT
+- **Styling**: CSS Modules + Design Tokens
+- **UI Components**: Based on shadcn/ui + Radix UI
+- **Monorepo**: Turborepo
 - **Package Manager**: pnpm
 
-## 🚀 Quick Start
+## 📚 Documentation
 
-### Prerequisites
+- `PROJECT_CONTEXT.md` - Project overview and architecture
+- `ROADMAP.md` - Development roadmap
+- `packages/ui/ARCHITECTURE.md` - UI design system architecture
+- `packages/ui/COMPONENTS.md` - Component reference
 
-- Node.js 18+
-- pnpm
-- MongoDB instance (local or Atlas)
+## 🎨 UI Component Library
 
-### Installation
+View live demos at http://localhost:3001/primitives
 
-1. **Clone the repository**
-   ```bash
-   git clone <your-repo-url>
-   cd athletics
-   ```
+### Component Categories
 
-2. **Install dependencies**
-   ```bash
-   pnpm install
-   ```
+- **Core**: Button, Input, Card, Badge, Label
+- **Forms**: Checkbox, Switch, Select, Form, Textarea
+- **Data**: Table, DataTable, Calendar, Chart, StatCard
+- **Overlays**: Dialog, Sheet, Drawer, Popover, Tooltip
+- **Navigation**: Tabs, Sidebar, Breadcrumb, Navigation Menu
+- **Feedback**: Alert, Toast, Progress, Skeleton
+- **Layout**: Accordion, Collapsible, Carousel, Aspect Ratio
 
-3. **Set up environment variables**
-   ```bash
-   cd apps/web
-   cp env.example .env.local
-   ```
+### Usage Example
 
-   Edit `.env.local`:
-   ```env
-   MONGODB_URI=mongodb://localhost:27017/athletics
-   AUTH_SECRET=your-super-secret-key-here
-   ```
+```tsx
+import { Button, Card, CardContent } from "@repo/ui/primitives";
 
-4. **Create a superAdmin user**
-   ```bash
-   # Add to .env.local
-   SEED_SUPERADMIN_EMAIL=admin@example.com
-   SEED_SUPERADMIN_PASSWORD=password123
-   SEED_SUPERADMIN_NAME=Super Admin
+export function MyComponent() {
+  return (
+    <Card>
+      <CardContent>
+        <Button variant="primary">Click me</Button>
+      </CardContent>
+    </Card>
+  );
+}
+```
 
-   # Run seed script
-   pnpm --filter web tsx scripts/seed.ts
-   ```
+## 🔒 Environment Variables
 
-5. **Start development server**
-   ```bash
-   pnpm dev
-   ```
+```env
+# Database
+MONGODB_URI=mongodb://localhost:27017/athletics
 
-6. **Open your browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
+# Authentication
+AUTH_SECRET=your-super-secret-key-min-32-chars
 
-## 🔐 Authentication Flow
+# Seed Data (for development)
+SEED_SUPERADMIN_EMAIL=admin@example.com
+SEED_SUPERADMIN_PASSWORD=secure-password
+SEED_SUPERADMIN_NAME=Super Admin
+```
 
-1. **Sign Up**: Users can create accounts with email/password
-2. **Sign In**: JWT token stored in httpOnly cookie
-3. **Role-Based Access**:
-   - `user`: Access to dashboard
-   - `admin`: Access to dashboard + user management
-   - `superAdmin`: Full system access
-
-## 🛡️ Security Features
-
-- JWT tokens with expiration
-- Password hashing with bcrypt
-- Role-based middleware protection
-- Secure cookie settings
-- Input validation with Zod
-- Protected API routes
-
-## 📊 API Endpoints
-
-### Auth
-- `POST /api/auth/sign-up` - User registration
-- `POST /api/auth/sign-in` - User login
-- `POST /api/auth/sign-out` - User logout
-
-### Users
-- `GET /api/users/me` - Get current user
-- `PATCH /api/users/me` - Update current user
-
-### Admin (admin/superAdmin only)
-- `GET /api/admin/users` - List all users
-- `GET /api/admin/users/[id]` - Get specific user
-- `PATCH /api/admin/users/[id]` - Update user
-
-## 🎯 Usage as Boilerplate
-
-This project is designed to be a reusable boilerplate:
-
-1. **Clone and customize** the branding and styling
-2. **Extend the User model** with additional fields
-3. **Add new roles** in `packages/auth/src/roles.ts`
-4. **Create new protected routes** following the middleware pattern
-5. **Deploy** to Vercel with MongoDB Atlas
-
-## 🚀 Deployment
+## 🚢 Deployment
 
 ### Vercel + MongoDB Atlas
 
-1. **Set up MongoDB Atlas**
-   - Create cluster and get connection string
-   - Add to Vercel environment variables
-
-2. **Deploy to Vercel**
-   ```bash
-   npx vercel --prod
-   ```
-
-3. **Configure environment variables**
-   - `MONGODB_URI`: Your Atlas connection string
-   - `AUTH_SECRET`: Strong secret key
-   - `NODE_ENV`: production
-
-## 📝 Development
-
-### Available Scripts
-
-```bash
-# Development
-pnpm dev              # Start all apps
-pnpm dev --filter=web # Start only web app
-
-# Build
-pnpm build            # Build all apps
-pnpm build --filter=web # Build only web app
-
-# Database
-pnpm --filter web tsx scripts/seed.ts # Create superAdmin
-
-# Linting
-pnpm lint             # Lint all packages
-```
-
-### Adding New Features
-
-1. **New API routes**: Add to `apps/web/app/api/`
-2. **New components**: Add to `apps/web/app/components/`
-3. **Shared utilities**: Add to `packages/`
-4. **Database models**: Add to `packages/db/src/models/`
+1. Create MongoDB Atlas cluster
+2. Create Vercel project
+3. Configure environment variables
+4. Deploy: `npx vercel --prod`
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
+This is a personal boilerplate project. Feel free to fork and adapt for your own use.
 
 ## 📄 License
 
-MIT License - see LICENSE file for details
+MIT
 
-## 🆘 Support
+## 👨‍💻 Author
 
-- Check the [ROADMAP.md](./ROADMAP.md) for development status
-- Review the [PROJECT_STRUCTURE.md](./PROJECT_STRUCTURE.md) for architecture details
-- Open an issue for bugs or feature requests
+jovanChe - [GitHub](https://github.com/jovanChe)

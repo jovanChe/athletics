@@ -1,178 +1,173 @@
-# Project Context for AI Assistants
-
-This file provides context for AI assistants working on this project.
+# Project Context
 
 ## Project Overview
 
 **Name**: Athletics Auth Boilerplate
 **Repository**: https://github.com/jovanChe/athletics.git
-**Type**: Next.js monorepo with authentication system
-**Purpose**: Reusable boilerplate for auth-enabled applications
+**Type**: Next.js monorepo with authentication and UI design system
+**Purpose**: Production-ready boilerplate with auth and comprehensive UI library
 
-## Architecture
+## Tech Stack
 
-### Tech Stack
 - **Framework**: Next.js 14 (App Router)
 - **Monorepo**: Turborepo
 - **Database**: MongoDB with Mongoose
 - **Authentication**: JWT with httpOnly cookies
-- **Styling**: Tailwind CSS
+- **UI Components**: 60+ components based on shadcn/ui
+- **Styling**: CSS Modules + Design Tokens
 - **Language**: TypeScript
 - **Package Manager**: pnpm
 
-### Project Structure
+## Project Structure
+
 ```
 athletics/
 ├── apps/
-│   ├── web/                 # Main Next.js application
-│   │   ├── app/            # App Router pages
-│   │   ├── components/     # React components
-│   │   └── scripts/        # Database seeding
+│   ├── web/                 # Main Next.js app with auth
 │   └── docs/               # Documentation site
 ├── packages/
-│   ├── auth/               # Authentication utilities
-│   ├── db/                 # Database models and connection
-│   ├── ui/                 # Shared UI components
-│   └── config/             # Shared configuration
-└── ROADMAP.md              # Development roadmap
+│   ├── auth/               # JWT auth & role-based access
+│   ├── db/                 # MongoDB models
+│   ├── ui/                 # Complete UI component library
+│   ├── config/             # Shared config
+│   └── typescript-config/  # TypeScript configs
 ```
 
 ## Key Features
 
 ### Authentication System
-- JWT-based authentication with secure cookies
+- JWT tokens with httpOnly cookies
 - Role-based access control (user, admin, superAdmin)
-- Password hashing with bcrypt
-- Middleware protection with role enforcement
+- Middleware protection
+- Secure password hashing
+
+### UI Design System
+- **60+ Components**: Complete shadcn/ui implementation
+- **CSS Modules**: Scoped styling
+- **Design Tokens**: Theme-able with CSS custom properties
+- **Accessibility**: Built on Radix UI primitives
+- **Components**: Button, Card, Dialog, Table, DataTable, Calendar, Charts, and more
 
 ### User Management
-- User registration and profile management
+- Registration and authentication
 - Admin panel for user management
-- Role assignment and updates
-- Secure API endpoints with authorization
+- Role assignment
+- Protected API routes
 
-## Important Files
+## Important Directories
 
-### Core Authentication
-- `packages/auth/src/jwt.ts` - JWT utilities
-- `packages/auth/src/roles.ts` - Role definitions
-- `packages/auth/src/policies.ts` - Authorization policies
+### Authentication
+- `packages/auth/src/` - JWT, roles, policies
 
 ### Database
-- `packages/db/src/models/User.ts` - User model
-- `packages/db/src/lib/mongoose.ts` - Database connection
+- `packages/db/src/models/` - Mongoose models
+- `packages/db/src/lib/` - DB connection
 
-### API Routes
-- `apps/web/app/api/auth/sign-up/route.ts` - User registration
-- `apps/web/app/api/auth/sign-in/route.ts` - User login
-- `apps/web/app/api/auth/sign-out/route.ts` - User logout
-- `apps/web/app/api/users/me/route.ts` - Current user
-- `apps/web/app/api/admin/users/route.ts` - Admin user management
+### UI Library
+- `packages/ui/components/primitives/` - 60+ UI components
+- `packages/ui/styles/` - CSS Modules & tokens
+- `packages/ui/app/primitives/` - Component demos
+- `packages/ui/app/blocks/` - Block templates
 
-### Frontend
-- `apps/web/app/components/LandingPage.tsx` - Auth forms
-- `apps/web/app/components/DashboardContent.tsx` - Dashboard
-- `apps/web/app/components/UsersManagement.tsx` - Admin panel
+### Main App
+- `apps/web/app/api/` - API routes
+- `apps/web/app/components/` - App components
 - `apps/web/app/middleware.ts` - Route protection
 
-## Development Setup
+## Environment Variables
 
-### Environment Variables
 ```env
 MONGODB_URI=mongodb://localhost:27017/athletics
-AUTH_SECRET=your-super-secret-key-here
+AUTH_SECRET=your-secret-key
 SEED_SUPERADMIN_EMAIL=admin@example.com
-SEED_SUPERADMIN_PASSWORD=password123
-SEED_SUPERADMIN_NAME=Super Admin
+SEED_SUPERADMIN_PASSWORD=secure-password
+SEED_SUPERADMIN_NAME=Admin User
 ```
 
-### Key Commands
+## Development Commands
+
 ```bash
-# Development
+# Install dependencies
+pnpm install
+
+# Development (all apps)
 pnpm dev
+
+# Development (specific app)
+pnpm --filter web dev      # Port 3000
+pnpm --filter @repo/ui dev # Port 3001
 
 # Create superAdmin
 pnpm --filter web tsx scripts/seed.ts
 
-# Build
+# Build all
 pnpm build
 
 # Lint
 pnpm lint
 ```
 
+## Component Usage
+
+```tsx
+import {
+  Button,
+  Card,
+  CardContent,
+  DataTable,
+  Chart
+} from "@repo/ui/primitives";
+
+export function MyComponent() {
+  return (
+    <Card>
+      <CardContent>
+        <Button variant="primary">Click me</Button>
+      </CardContent>
+    </Card>
+  );
+}
+```
+
+## Security
+
+- JWT with expiration
+- httpOnly cookies
+- Role-based authorization
+- Password hashing (bcrypt)
+- Input validation (Zod)
+- Protected routes and APIs
+
 ## Git Configuration
 
-### Multi-Account Setup
-- **jovanChe account**: Used for this project via HTTPS
-- **Predrag-Homestory account**: Used for other projects via SSH
-- **Project config**: Stored in `.git/config` (local)
-- **Global config**: Stored in `~/.gitconfig`
-
-### Project-Specific Config
+**Project-specific** (in `.git/config`):
 ```ini
 [user]
     name = jovanChe
     email = j.predrag@gmail.com
 ```
 
-## Security Considerations
-
-- JWT tokens with expiration
-- httpOnly cookies for token storage
-- Role-based middleware protection
-- Input validation with Zod
-- Password hashing with bcrypt
-- Protected API routes
-
 ## Deployment
 
 ### Vercel + MongoDB Atlas
-1. Set up MongoDB Atlas cluster
-2. Configure environment variables in Vercel
-3. Deploy with `npx vercel --prod`
+1. Create MongoDB Atlas cluster
+2. Set environment variables in Vercel
+3. Deploy: `npx vercel --prod`
 
-## Common Patterns
+## Documentation
 
-### Adding New Protected Routes
-1. Create page in `apps/web/app/`
-2. Add middleware protection in `apps/web/app/middleware.ts`
-3. Use role-based checks with `canManageUsers()` from `@repo/auth`
+- `packages/ui/ARCHITECTURE.md` - UI design system architecture
+- `packages/ui/COMPONENTS.md` - Component reference
+- `packages/ui/SHADCN_PRIORITY.md` - Component implementation status
+- Live demos: http://localhost:3001/primitives (when running UI dev server)
 
-### Adding New API Routes
-1. Create route in `apps/web/app/api/`
-2. Use `verifyAuthToken()` for authentication
-3. Use policy functions for authorization
-4. Connect to database with `connectToDatabase()`
+## Current Status
 
-### Adding New Database Models
-1. Create model in `packages/db/src/models/`
-2. Export from `packages/db/src/index.ts`
-3. Import in API routes as `@repo/db`
-
-## Recent Development
-
-### Latest Changes
-- Enhanced middleware with role-based protection
-- Created admin user management interface
-- Updated README with comprehensive documentation
-- Set up multi-account Git configuration
-
-### Current Status
-- ✅ Complete auth system implemented
-- ✅ Admin panel functional
-- ✅ Repository pushed to GitHub
-- ✅ Documentation updated
-
-## Future Enhancements
-
-- User profile management page
-- Email verification flow
-- Password reset functionality
-- File upload for avatars
-- Testing suite
-- CI/CD pipeline
-
----
-
-*This context file should be updated as the project evolves.*
+✅ **Complete**
+- Authentication system
+- Admin panel
+- 60+ UI components
+- Design token system
+- Multiple themes
+- Component demos
+- Block templates

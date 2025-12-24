@@ -1,154 +1,108 @@
-# ROADMAP
-
-A living plan to guide development, ensure completeness, and make this reusable as a boilerplate.
+# Development Roadmap
 
 ## Status Legend
-- [x] Done
-- [ ] Todo
-- [~] In-progress / Partial
+- ✅ Complete
+- 🚧 In Progress
+- ⏳ Planned
 
-## Phase 0 — Project Bootstrap
-- [x] Monorepo with Turborepo
-  - `turbo.json`, `pnpm-workspace.yaml`
-- [x] Workspaces: `apps/web`, `apps/docs`, `packages/auth`, `packages/db`, `packages/ui`, `packages/config`, `packages/typescript-config`
-- [x] Base TypeScript and ESLint config
-- [x] Tailwind setup in `apps/web` using shared styles from `packages/config`
+## ✅ Phase 1: Foundation (Complete)
+- ✅ Monorepo with Turborepo setup
+- ✅ TypeScript and ESLint configuration
+- ✅ Package structure (auth, db, ui, config)
 
-## Phase 1 — Auth & Users (Backend)
-- [x] User model (MongoDB + Mongoose)
-  - `packages/db/src/models/User.ts`
-- [x] DB connection util
-  - `packages/db/src/lib/mongoose.ts`
-- [x] JWT utilities and roles
-  - `packages/auth/src/jwt.ts`, `packages/auth/src/roles.ts`, `packages/auth/src/policies.ts`
-- [x] Sign up API: `POST /api/auth/sign-up`
-  - Zod validation, bcrypt hashing
-  - `apps/web/app/api/auth/sign-up/route.ts`
-- [x] Sign in API: `POST /api/auth/sign-in`
-  - Verifies credentials, sets `auth_token` cookie
-  - `apps/web/app/api/auth/sign-in/route.ts`
-- [x] Sign out API: `POST /api/auth/sign-out`
-  - Clears cookie
-  - `apps/web/app/api/auth/sign-out/route.ts`
-- [x] Me API: `GET /api/users/me`, `PATCH /api/users/me`
-  - JWT from cookie, update name/image
-  - `apps/web/app/api/users/me/route.ts`
-- [x] Healthcheck: `GET /api/health`
-- [~] Middleware protection
-  - Present for `/dashboard` and `/admin` routes based on cookie existence
-  - `apps/web/app/middleware.ts`
-  - [ ] Enforce role-based access (decode + verify token; guard `/admin` only for `admin|superAdmin`)
-  - [ ] Add public route allowlist and explicit protected matchers
-- [ ] Security hardening
-  - [ ] Rate limiting (sign-in/sign-up/admin routes)
-  - [ ] CSRF protection if using non-REST patterns
-  - [ ] Cookie settings review (domain, secure, sameSite, path)
-  - [ ] Input sanitization strategy
-- [ ] Account lifecycle
-  - [ ] Email verification flow
-  - [ ] Password reset flow
-  - [ ] Password change endpoint (with old password check)
-  - [ ] Session invalidation/rotation strategy
-- [x] Seeding & roles
-  - [x] Seed script for `superAdmin` + demo users (`apps/web/scripts/seed.ts`)
-  - [ ] Admin role promotion endpoint (admin-only)
+## ✅ Phase 2: Authentication & Authorization (Complete)
+- ✅ JWT authentication with httpOnly cookies
+- ✅ User model (MongoDB + Mongoose)
+- ✅ Role-based access control (user, admin, superAdmin)
+- ✅ Auth APIs (sign-up, sign-in, sign-out)
+- ✅ Middleware protection for routes
+- ✅ Admin user management APIs
+- ✅ Seeding script for superAdmin
 
-## Phase 2 — Admin (Backend)
-- [x] Admin APIs
-  - `GET /api/admin/users` list
-  - `GET /api/admin/users/[id]` fetch
-  - `PATCH /api/admin/users/[id]` update
-- [ ] Admin APIs hardening
-  - [ ] Ensure `canManageUsers` used everywhere and middleware guards `/admin`
-  - [ ] Audit fields allowed in updates (no email/password change here unless intended)
-  - [ ] Add delete user endpoint if needed
-  - [ ] Pagination & filtering on users list
+## ✅ Phase 3: UI Design System (Complete)
+- ✅ 60+ components based on shadcn/ui
+- ✅ CSS Modules + Design Tokens architecture
+- ✅ Complete component library:
+  - Core: Button, Input, Card, Badge, etc.
+  - Forms: Checkbox, Switch, Select, Form, etc.
+  - Data: Table, DataTable, Calendar, Chart
+  - Overlays: Dialog, Drawer, Popover, etc.
+  - Navigation: Tabs, Sidebar, Navigation Menu, etc.
+- ✅ Multiple theme support
+- ✅ Component demos and documentation
+- ✅ Block templates (Login, Dashboard, Settings)
 
-## Phase 3 — Frontend Screens
-- Landing
-  - [x] Basic landing page
-- Auth UI
-  - [x] Sign-up page + form
-  - [x] Sign-in page + form
-  - [x] Sign-out button
-- User
-  - [ ] Profile page: view/update name/image (uses `/api/users/me`)
-  - [ ] Avatar upload or URL picker (optional)
-- Dashboard
-  - [~] Basic dashboard shell
-  - [ ] Server-side session check and redirect
-  - [ ] Example widgets and data fetching pattern
-- Admin
-  - [x] Admin users list (table with pagination)
-  - [x] Admin user detail/edit form (role changes)
-  - [x] Guarded routes + error/forbidden states
+## ✅ Phase 4: Frontend (Complete)
+- ✅ Landing page with auth forms
+- ✅ Dashboard page
+- ✅ Admin panel for user management
+- ✅ Protected routes
 
-## Phase 4 — Design System (Reusable)
-- [x] Base UI package with primitives: `packages/ui` (`button`, `card`, `code`)
-- [ ] Tokenized theme structure (colors, spacing, radii, typography)
-- [ ] Global theming and dark mode support
-- [ ] Form components (input, select, textarea, checkbox, radio, switch)
-- [ ] Layout primitives (stack, grid, container)
-- [ ] Data display (table, badge, avatar, skeleton)
-- [ ] Feedback (toast system, alert, dialog)
-- [ ] Docs playground/examples in `ui/design-system` with usage guidelines
-- [ ] Theming guide to swap branding quickly
+## ⏳ Phase 5: Enhancement (Planned)
 
-## Phase 5 — DevEx, Quality & Testing
-- [ ] End-to-end tests (Playwright/Cypress) for auth flows
-- [ ] API tests (Vitest/Jest + supertest or Next test utils)
-- [ ] Linting and type-check on commit/CI
-- [ ] Prettier standardized
-- [ ] Error logging (Sentry/OpenTelemetry)
-- [ ] Request logging (pino/http), correlation IDs
-- [ ] Runtime schema validation (zod) on all request bodies and responses
-- [ ] Monitoring health endpoint integration
+### Security & Auth Improvements
+- ⏳ Email verification flow
+- ⏳ Password reset functionality
+- ⏳ Rate limiting for auth endpoints
+- ⏳ CSRF protection
+- ⏳ Session refresh strategy
+- ⏳ OAuth providers (Google, GitHub)
 
-## Phase 6 — Hosting & CI/CD
-- Hosting (suggested)
-  - **Web**: Vercel (Next.js)
-  - **DB**: MongoDB Atlas
-- Envs
-  - [x] `AUTH_SECRET` (required)
-  - [x] `MONGODB_URI` (required)
-  - [ ] `NEXT_PUBLIC_*` as needed for client
-- Steps
-  - [ ] Create Atlas cluster; get `MONGODB_URI`
-  - [ ] Create Vercel project pointing to `apps/web`; set build output
-  - [ ] Configure env vars on Vercel (`AUTH_SECRET`, `MONGODB_URI`)
-  - [ ] Add `vercel.json` if any custom routing needed
-  - [ ] Production cookie settings verify (`secure`, `sameSite`)
-- CI/CD
-  - [ ] GitHub Actions for lint, typecheck, test, build
-  - [ ] Preview deployments on PRs
-  - [ ] Auto-run seed script on first deploy (guarded)
+### User Features
+- ⏳ User profile management page
+- ⏳ Avatar upload
+- ⏳ Password change endpoint
+- ⏳ Email notifications
 
-## Reusability & Boilerplate Goals
-- [ ] Clear configuration boundaries:
-  - App-specific in `apps/web`; reusable in `packages/*`
-- [ ] Auth and RBAC isolated in `packages/auth`
-- [ ] DB models and connect isolated in `packages/db`
-- [ ] Styling/system isolated in `packages/ui` and `packages/config`
-- [ ] Documentation in `apps/docs` explaining structure and usage
-- [ ] Example `.env` in `apps/web/env.example` kept up to date
+### Admin Features
+- ⏳ User deletion endpoint
+- ⏳ Pagination & filtering for user list
+- ⏳ Activity logs
+- ⏳ Analytics dashboard
 
-## Open Questions / Decisions
-- [ ] Email provider for verification/reset (e.g., Resend/SendGrid)
-- [ ] File storage for images (Vercel Blob/S3/Cloudinary)
-- [ ] Logging/Monitoring stack choice
-- [ ] Preferred test stack (Playwright vs Cypress, Vitest vs Jest)
-- [ ] Whether to use refresh tokens vs short-lived access tokens
-- [ ] Whether to add OAuth providers later
+### Developer Experience
+- ⏳ End-to-end tests (Playwright)
+- ⏳ API tests (Vitest)
+- ⏳ CI/CD pipeline (GitHub Actions)
+- ⏳ Error logging (Sentry)
+- ⏳ Request logging
+- ⏳ Comprehensive test coverage
 
-## References (current implementation)
-- Auth
-  - `packages/auth/src/*`
-  - `apps/web/app/api/auth/*`
-  - `apps/web/app/middleware.ts`
-- Users
-  - `packages/db/src/models/User.ts`
-  - `apps/web/app/api/users/me/route.ts`
-  - `apps/web/app/api/admin/users/*`
-- Infra
-  - `packages/db/src/lib/mongoose.ts`
-  - `apps/web/app/api/health/route.ts`
+### Deployment & Infrastructure
+- ⏳ Vercel deployment configuration
+- ⏳ MongoDB Atlas setup
+- ⏳ Environment-specific configurations
+- ⏳ Preview deployments for PRs
+- ⏳ Performance monitoring
+
+### UI Enhancements
+- ⏳ Additional block templates
+- ⏳ Animation system
+- ⏳ Mobile responsiveness improvements
+- ⏳ Accessibility audit
+
+## 🔮 Future Considerations
+- Multi-tenancy support
+- i18n (internationalization)
+- File storage integration
+- Real-time features (WebSocket)
+- Advanced analytics
+- API documentation (Swagger/OpenAPI)
+- GraphQL API layer
+
+## Current Focus
+Building additional features on top of the complete authentication and UI foundation.
+
+## Quick Start
+```bash
+# Install dependencies
+pnpm install
+
+# Run development servers
+pnpm dev
+
+# Create superAdmin
+pnpm --filter web tsx scripts/seed.ts
+```
+
+See `PROJECT_CONTEXT.md` for detailed information.
