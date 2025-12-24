@@ -36,6 +36,10 @@
 - Toggle Group ✅ (Single/multiple selection toggle groups)
 - Input OTP ✅ (One-time password input with copy/paste)
 - Context Menu ✅ (Right-click context menus with submenus, checkboxes, radio items)
+- Navigation Menu ✅ (Complex top nav with mega-menu support)
+- Menubar ✅ (Desktop app-style menu bar)
+- Aspect Ratio ✅ (Simple ratio container)
+- Carousel ✅ (Image/content sliders with Embla)
 
 ---
 

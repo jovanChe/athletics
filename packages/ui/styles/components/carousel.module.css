@@ -1,0 +1,116 @@
+/**
+ * Carousel Component Styles
+ * Image/content slider with navigation
+ */
+
+.root {
+  position: relative;
+  width: 100%;
+}
+
+.viewport {
+  overflow: hidden;
+}
+
+.content {
+  display: flex;
+  margin-left: calc(-1 * var(--space-md));
+}
+
+.contentVertical {
+  flex-direction: column;
+  margin-left: 0;
+  margin-top: calc(-1 * var(--space-md));
+}
+
+.item {
+  min-width: 0;
+  flex: 0 0 100%;
+  padding-left: var(--space-md);
+}
+
+.itemVertical {
+  padding-left: 0;
+  padding-top: var(--space-md);
+}
+
+.navButton {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-full);
+  z-index: 10;
+}
+
+.navButtonVertical {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.prevButton {
+  left: calc(-1 * var(--space-xl));
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.prevButtonVertical {
+  left: 50%;
+  top: calc(-1 * var(--space-xl));
+  transform: translateX(-50%) rotate(90deg);
+}
+
+.nextButton {
+  right: calc(-1 * var(--space-xl));
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nextButtonVertical {
+  right: auto;
+  left: 50%;
+  bottom: calc(-1 * var(--space-xl));
+  top: auto;
+  transform: translateX(-50%) rotate(90deg);
+}
+
+.navIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Dots indicator (optional usage) */
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xs);
+  margin-top: var(--space-md);
+}
+
+.dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--radius-full);
+  background: var(--color-border-secondary);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.dotActive {
+  background: var(--color-interactive-primary);
+  width: 1.5rem;
+}
+
