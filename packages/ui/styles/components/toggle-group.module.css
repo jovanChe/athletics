@@ -18,34 +18,34 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-sm);
-  
+
   /* Typography */
   font-family: var(--font-family-base);
   font-size: var(--font-size-sm);
   font-weight: 500;
   white-space: nowrap;
-  
+
   /* Styling */
   background: var(--color-bg-primary);
   color: var(--color-text-secondary);
   border: none;
-  
+
   /* Interactions */
   cursor: pointer;
   transition: var(--transition-fast);
   outline: none;
-  
+
   /* First and last item border radius */
   &:first-child {
     border-top-left-radius: calc(var(--radius-md) - 1px);
     border-bottom-left-radius: calc(var(--radius-md) - 1px);
   }
-  
+
   &:last-child {
     border-top-right-radius: calc(var(--radius-md) - 1px);
     border-bottom-right-radius: calc(var(--radius-md) - 1px);
   }
-  
+
   /* Focus state */
   &:focus-visible {
     outline: 2px solid var(--color-border-focus);
@@ -53,19 +53,19 @@
     z-index: 1;
     position: relative;
   }
-  
+
   /* Hover state */
   &:hover:not(:disabled) {
     background: var(--color-bg-secondary);
     color: var(--color-text-primary);
   }
-  
+
   /* On state */
   &[data-state="on"] {
     background: var(--color-bg-tertiary);
     color: var(--color-text-primary);
   }
-  
+
   /* Disabled state */
   &:disabled {
     opacity: 0.5;
@@ -81,7 +81,7 @@
 
 .outline {
   background: transparent;
-  
+
   &[data-state="on"] {
     background: var(--color-bg-tertiary);
   }

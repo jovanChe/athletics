@@ -42,7 +42,7 @@ const InputOTPSlot = React.forwardRef<
 >(({ index, className, ...props }, ref) => {
   const inputOTPContext = React.useContext(OTPInputContext);
   const slot = inputOTPContext.slots[index];
-  
+
   if (!slot) {
     return null;
   }
