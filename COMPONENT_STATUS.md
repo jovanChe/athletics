@@ -176,13 +176,16 @@ All previously missing Tier 5 components have been successfully implemented:
 Beyond Tier 5 components, consider these for a complete building block system:
 
 ### Data Display & Visualization
-1. **Data Table** (Enhanced)
+1. **DataTable** ✅ Complete (Enhanced)
    - ✅ Basic Table exists
-   - ❌ Sorting functionality
-   - ❌ Filtering functionality
-   - ❌ Column resizing
-   - ❌ Row selection
-   - ❌ Export functionality
+   - ✅ Column sorting (click headers)
+   - ✅ Column filtering / global search
+   - ✅ Column visibility toggle
+   - ✅ Row selection (single/multi)
+   - ✅ Pagination with page size options
+   - ✅ Built on TanStack Table v8
+   - ❌ Column resizing (future)
+   - ❌ Export functionality (future)
 
 2. **Chart Components** (New)
    - Line charts

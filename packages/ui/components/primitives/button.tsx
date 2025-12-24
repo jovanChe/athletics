@@ -118,7 +118,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           </svg>
         )}
         {!loading && leftIcon}
-        <span>{children}</span>
+        {children}
         {!loading && rightIcon}
       </button>
     );

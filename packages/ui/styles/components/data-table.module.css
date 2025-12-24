@@ -1,0 +1,185 @@
+/**
+ * DataTable Component Styles
+ * Enhanced table with sorting, filtering, pagination
+ */
+
+.wrapper {
+  width: 100%;
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+}
+
+.filterInput {
+  max-width: 20rem;
+}
+
+.columnsButton {
+  margin-left: auto;
+}
+
+.columnsButton .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.columnsButton .icon:first-child {
+  margin-right: var(--space-xs);
+}
+
+.columnsButton .icon:last-child {
+  margin-left: var(--space-xs);
+}
+
+/* Table wrapper */
+.tableWrapper {
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+/* Selected row state */
+.selectedRow {
+  background-color: var(--color-bg-tertiary) !important;
+}
+
+/* Empty state */
+.emptyCell {
+  height: 6rem;
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) 0;
+  gap: var(--space-md);
+}
+
+.selectionInfo {
+  flex: 1;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.paginationControls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.pageSizeSelector {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.pageSizeLabel {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.pageSizeSelect {
+  width: 4.5rem;
+  height: 2rem;
+}
+
+.pageInfo {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  min-width: 6rem;
+  text-align: center;
+}
+
+.pageButtons {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Sort button in column header */
+.sortButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  margin: calc(-1 * var(--space-xs)) calc(-1 * var(--space-sm));
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.sortButton:hover {
+  background-color: transparent;
+}
+
+.sortIcon {
+  width: 0.875rem;
+  height: 0.875rem;
+  opacity: 0.5;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.sortButton:hover .sortIcon {
+  opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filterInput {
+    max-width: none;
+  }
+
+  .columnsButton {
+    margin-left: 0;
+  }
+
+  .pagination {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .paginationControls {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pageSizeSelector {
+    order: 2;
+  }
+
+  .pageInfo {
+    order: 1;
+    width: 100%;
+    text-align: center;
+  }
+
+  .pageButtons {
+    order: 3;
+  }
+}
+

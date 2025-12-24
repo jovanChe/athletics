@@ -176,9 +176,10 @@
 - Badge ✅ (Tier 1)
 - Separator ✅ (Tier 1)
 - Table ✅ (Done)
-- Tabs (Tier 3)
-- Skeleton (Tier 4)
-- Progress (Tier 4)
+- DataTable ✅ (TanStack Table integration with sorting, filtering, pagination)
+- Tabs ✅ (Tier 3)
+- Skeleton ✅ (Tier 4)
+- Progress ✅ (Tier 4)
 
 ### Sidebar Blocks
 - Badge ✅ (Tier 1)
