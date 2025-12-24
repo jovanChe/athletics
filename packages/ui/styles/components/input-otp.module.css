@@ -1,0 +1,109 @@
+/**
+ * Input OTP Component Styles
+ * One-time password input component
+ */
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  
+  /* Disable text selection on the container */
+  &:has(:disabled) {
+    opacity: 0.5;
+  }
+}
+
+.input {
+  /* Hide the actual input but keep it functional */
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.slot {
+  /* Layout */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Sizing */
+  width: 2.5rem;
+  height: 3rem;
+  
+  /* Typography */
+  font-family: var(--font-family-mono, var(--font-family-base));
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  
+  /* Styling */
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-md);
+  
+  /* Transitions */
+  transition: var(--transition-fast);
+}
+
+.slotActive {
+  border-color: var(--color-border-focus);
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: -1px;
+  z-index: 10;
+}
+
+.caretContainer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.caret {
+  width: 1px;
+  height: 1.5rem;
+  background: var(--color-text-primary);
+  animation: caretBlink 1s ease-in-out infinite;
+}
+
+@keyframes caretBlink {
+  0%, 70%, 100% {
+    opacity: 1;
+  }
+  20%, 50% {
+    opacity: 0;
+  }
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-tertiary);
+}
+
+.separatorIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .slot {
+    width: 2.25rem;
+    height: 2.75rem;
+    font-size: var(--font-size-base);
+  }
+}
+

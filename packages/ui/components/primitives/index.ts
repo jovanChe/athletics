@@ -279,3 +279,33 @@ export type { StatCardProps } from './stat-card';
 // EmptyState component
 export { EmptyState } from './empty-state';
 export type { EmptyStateProps } from './empty-state';
+
+// Toggle components
+export { Toggle } from './toggle';
+export type { ToggleProps, ToggleVariant, ToggleSize } from './toggle';
+
+export { ToggleGroup, ToggleGroupItem } from './toggle-group';
+export type { ToggleGroupProps, ToggleGroupItemProps, ToggleGroupVariant, ToggleGroupSize } from './toggle-group';
+
+// Input OTP component
+export { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator } from './input-otp';
+export type { InputOTPProps, InputOTPGroupProps, InputOTPSlotProps, InputOTPSeparatorProps } from './input-otp';
+
+// Context Menu component
+export {
+  ContextMenu,
+  ContextMenuTrigger,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuCheckboxItem,
+  ContextMenuRadioItem,
+  ContextMenuLabel,
+  ContextMenuSeparator,
+  ContextMenuShortcut,
+  ContextMenuGroup,
+  ContextMenuPortal,
+  ContextMenuSub,
+  ContextMenuSubContent,
+  ContextMenuSubTrigger,
+  ContextMenuRadioGroup,
+} from './context-menu';

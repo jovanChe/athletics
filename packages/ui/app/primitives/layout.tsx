@@ -20,6 +20,7 @@ export default function PrimitivesLayout({
     { href: '/primitives/checkbox', label: 'Checkbox' },
     { href: '/primitives/collapsible', label: 'Collapsible' },
     { href: '/primitives/command', label: 'Command' },
+    { href: '/primitives/context-menu', label: 'Context Menu' },
     { href: '/primitives/data-table', label: 'Data Table' },
     { href: '/primitives/dialog', label: 'Dialog' },
     { href: '/primitives/drawer', label: 'Drawer' },
@@ -28,6 +29,7 @@ export default function PrimitivesLayout({
     { href: '/primitives/form', label: 'Form' },
     { href: '/primitives/hover-card', label: 'Hover Card' },
     { href: '/primitives/input', label: 'Input' },
+    { href: '/primitives/input-otp', label: 'Input OTP' },
     { href: '/primitives/label', label: 'Label' },
     { href: '/primitives/layout', label: 'Layout' },
     { href: '/primitives/menu-item', label: 'MenuItem' },
@@ -49,6 +51,7 @@ export default function PrimitivesLayout({
     { href: '/primitives/tabs', label: 'Tabs' },
     { href: '/primitives/textarea', label: 'Textarea' },
     { href: '/primitives/toast', label: 'Toast' },
+    { href: '/primitives/toggle', label: 'Toggle' },
     { href: '/primitives/tooltip', label: 'Tooltip' },
   ];
 

@@ -1,0 +1,107 @@
+/**
+ * Toggle Component Styles
+ * A two-state button that can be either on or off
+ */
+
+.root {
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  
+  /* Typography */
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  
+  /* Styling */
+  background: transparent;
+  color: var(--color-text-secondary);
+  border: none;
+  border-radius: var(--radius-md);
+  
+  /* Interactions */
+  cursor: pointer;
+  transition: var(--transition-fast);
+  outline: none;
+  
+  /* Focus state */
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+  
+  /* Hover state */
+  &:hover:not(:disabled) {
+    background: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+  }
+  
+  /* Pressed/On state */
+  &[data-state="on"] {
+    background: var(--color-bg-tertiary);
+    color: var(--color-text-primary);
+  }
+  
+  /* Disabled state */
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+/* Variants */
+.default {
+  background: transparent;
+}
+
+.outline {
+  border: 1px solid var(--color-border-primary);
+  background: transparent;
+  
+  &:hover:not(:disabled) {
+    background: var(--color-bg-secondary);
+  }
+  
+  &[data-state="on"] {
+    background: var(--color-bg-tertiary);
+  }
+}
+
+/* Sizes */
+.sm {
+  height: 2rem;
+  padding: 0 var(--space-sm);
+  font-size: var(--font-size-xs);
+}
+
+.default {
+  height: 2.5rem;
+  padding: 0 var(--space-md);
+}
+
+.lg {
+  height: 2.75rem;
+  padding: 0 var(--space-lg);
+  font-size: var(--font-size-base);
+}
+
+/* Icon styling */
+.root svg {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.sm svg {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.lg svg {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+

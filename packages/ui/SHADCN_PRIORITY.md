@@ -31,6 +31,12 @@
 - Collapsible ✅
 - Sidebar ✅ (Full implementation with variants, collapsible modes, mobile support)
 
+### Additional Components (Complete)
+- Toggle ✅ (Two-state button on/off)
+- Toggle Group ✅ (Single/multiple selection toggle groups)
+- Input OTP ✅ (One-time password input with copy/paste)
+- Context Menu ✅ (Right-click context menus with submenus, checkboxes, radio items)
+
 ---
 
 ## Priority Tiers
