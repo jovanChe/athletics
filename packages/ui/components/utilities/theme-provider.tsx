@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { type ThemeName, type SpacingVariant, themes, spacingVariants } from '../../tokens/themes';
+import { STORAGE_KEY, ATTRIBUTE } from './theme-script';
 
 interface ThemeContextValue {
   theme: ThemeName;
@@ -16,59 +17,98 @@ export interface ThemeProviderProps {
   children: React.ReactNode;
   defaultTheme?: ThemeName;
   defaultSpacing?: SpacingVariant;
-  storageKey?: string;
-  attribute?: string;
   enableSystem?: boolean;
   disableTransitionOnChange?: boolean;
 }
 
+/**
+ * ThemeProvider
+ *
+ * Manages theme and spacing state. Works in conjunction with ThemeScript
+ * which prevents flash by applying the theme before React hydration.
+ *
+ * @example
+ * ```tsx
+ * // app/layout.tsx
+ * import { ThemeProvider } from '@/components/utilities/theme-provider';
+ * import { ThemeScript } from '@/components/utilities/theme-script';
+ *
+ * export default function RootLayout({ children }) {
+ *   return (
+ *     <html lang="en" suppressHydrationWarning>
+ *       <head>
+ *         <ThemeScript />
+ *       </head>
+ *       <body>
+ *         <ThemeProvider>{children}</ThemeProvider>
+ *       </body>
+ *     </html>
+ *   );
+ * }
+ * ```
+ */
 export function ThemeProvider({
   children,
   defaultTheme = 'base',
   defaultSpacing = 'normal',
-  storageKey = 'ds-theme',
-  attribute = 'data-theme',
   enableSystem = true,
   disableTransitionOnChange = false,
-  ...props
 }: ThemeProviderProps) {
-  const [theme, setThemeState] = React.useState<ThemeName>(defaultTheme);
-  const [spacing, setSpacingState] = React.useState<SpacingVariant>(defaultSpacing);
+  // Initialize state from DOM attribute (set by ThemeScript) or default
+  const [theme, setThemeState] = React.useState<ThemeName>(() => {
+    // On server, use default
+    if (typeof window === 'undefined') return defaultTheme;
+
+    // On client, read from DOM attribute (set by inline script)
+    const currentTheme = document.documentElement.getAttribute(ATTRIBUTE) as ThemeName | null;
+    if (currentTheme && themes[currentTheme]) {
+      return currentTheme;
+    }
+
+    // If no attribute, check if we should use base theme
+    // (absence of attribute means base/light theme)
+    return 'base';
+  });
+
+  const [spacing, setSpacingState] = React.useState<SpacingVariant>(() => {
+    if (typeof window === 'undefined') return defaultSpacing;
+
+    const currentSpacing = document.documentElement.getAttribute('data-spacing') as SpacingVariant | null;
+    if (currentSpacing && spacingVariants[currentSpacing]) {
+      return currentSpacing;
+    }
+    return 'normal';
+  });
 
   // Apply theme to document
-  const applyTheme = React.useCallback((themeName: ThemeName, spacingName: SpacingVariant) => {
-    const root = window.document.documentElement;
+  const applyTheme = React.useCallback((themeName: ThemeName) => {
+    const root = document.documentElement;
 
-    // Remove existing theme attributes
-    Object.keys(themes).forEach(name => {
-      root.removeAttribute(`data-theme-${name}`);
-    });
-
-    // Remove existing spacing attributes
-    Object.keys(spacingVariants).forEach(name => {
-      root.removeAttribute(`data-spacing-${name}`);
-    });
-
-    // Apply new theme
+    // Apply new theme attribute
     if (themeName === 'base') {
-      root.removeAttribute(attribute);
+      root.removeAttribute(ATTRIBUTE);
     } else {
-      root.setAttribute(attribute, themeName);
+      root.setAttribute(ATTRIBUTE, themeName);
     }
 
-    // Apply spacing variant
-    if (spacingName !== 'normal') {
-      root.setAttribute('data-spacing', spacingName);
-    } else {
-      root.removeAttribute('data-spacing');
-    }
-
-    // Apply custom CSS properties for theme
+    // Apply custom CSS properties for theme (for runtime overrides)
     const themeConfig = themes[themeName];
     if (themeConfig.colors) {
       Object.entries(themeConfig.colors).forEach(([key, value]) => {
         root.style.setProperty(`--color-${key}`, value);
       });
+    }
+  }, []);
+
+  // Apply spacing to document
+  const applySpacing = React.useCallback((spacingName: SpacingVariant) => {
+    const root = document.documentElement;
+
+    // Apply spacing attribute
+    if (spacingName !== 'normal') {
+      root.setAttribute('data-spacing', spacingName);
+    } else {
+      root.removeAttribute('data-spacing');
     }
 
     // Apply custom CSS properties for spacing
@@ -76,7 +116,7 @@ export function ThemeProvider({
     Object.entries(spacingConfig.values).forEach(([key, value]) => {
       root.style.setProperty(`--space-${key}`, value);
     });
-  }, [attribute]);
+  }, []);
 
   const setTheme = React.useCallback(
     (newTheme: ThemeName) => {
@@ -98,55 +138,32 @@ export function ThemeProvider({
       }
 
       setThemeState(newTheme);
+      applyTheme(newTheme);
 
+      // Persist to localStorage
       try {
-        localStorage.setItem(`${storageKey}-theme`, newTheme);
+        localStorage.setItem(`${STORAGE_KEY}-theme`, newTheme);
       } catch {
         // Ignore localStorage errors
       }
     },
-    [storageKey, disableTransitionOnChange]
+    [applyTheme, disableTransitionOnChange]
   );
 
   const setSpacing = React.useCallback(
     (newSpacing: SpacingVariant) => {
       setSpacingState(newSpacing);
+      applySpacing(newSpacing);
 
+      // Persist to localStorage
       try {
-        localStorage.setItem(`${storageKey}-spacing`, newSpacing);
+        localStorage.setItem(`${STORAGE_KEY}-spacing`, newSpacing);
       } catch {
         // Ignore localStorage errors
       }
     },
-    [storageKey]
+    [applySpacing]
   );
-
-  // Initialize theme from localStorage or system preference
-  React.useEffect(() => {
-    try {
-      const storedTheme = localStorage.getItem(`${storageKey}-theme`) as ThemeName;
-      const storedSpacing = localStorage.getItem(`${storageKey}-spacing`) as SpacingVariant;
-
-      if (storedTheme && themes[storedTheme]) {
-        setThemeState(storedTheme);
-      } else if (enableSystem) {
-        // Check system preference
-        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'base';
-        setThemeState(systemTheme);
-      }
-
-      if (storedSpacing && spacingVariants[storedSpacing]) {
-        setSpacingState(storedSpacing);
-      }
-    } catch {
-      // Ignore localStorage errors, use defaults
-    }
-  }, [storageKey, enableSystem]);
-
-  // Apply theme whenever it changes
-  React.useEffect(() => {
-    applyTheme(theme, spacing);
-  }, [theme, spacing, applyTheme]);
 
   // Listen for system theme changes
   React.useEffect(() => {
@@ -157,9 +174,11 @@ export function ThemeProvider({
     const handleChange = (e: MediaQueryListEvent) => {
       // Only auto-switch if no manual theme is stored
       try {
-        const storedTheme = localStorage.getItem(`${storageKey}-theme`);
+        const storedTheme = localStorage.getItem(`${STORAGE_KEY}-theme`);
         if (!storedTheme) {
-          setThemeState(e.matches ? 'dark' : 'base');
+          const newTheme = e.matches ? 'dark' : 'base';
+          setThemeState(newTheme);
+          applyTheme(newTheme);
         }
       } catch {
         // Ignore localStorage errors
@@ -168,7 +187,7 @@ export function ThemeProvider({
 
     mediaQuery.addEventListener('change', handleChange);
     return () => mediaQuery.removeEventListener('change', handleChange);
-  }, [enableSystem, storageKey]);
+  }, [enableSystem, applyTheme]);
 
   const value = React.useMemo(
     () => ({
@@ -181,7 +200,7 @@ export function ThemeProvider({
   );
 
   return (
-    <ThemeContext.Provider value={value} {...props}>
+    <ThemeContext.Provider value={value}>
       {children}
     </ThemeContext.Provider>
   );

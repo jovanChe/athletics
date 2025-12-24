@@ -244,3 +244,38 @@ export type {
 } from './data-table';
 
 export { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupAction, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarInput, SidebarInset, SidebarMenu, SidebarMenuAction, SidebarMenuBadge, SidebarMenuButton, SidebarMenuItem, SidebarMenuSkeleton, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem, SidebarProvider, SidebarRail, SidebarSeparator, SidebarTrigger, useSidebar } from './sidebar';
+
+// Chart components (Recharts integration)
+export {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  ChartLegend,
+  ChartLegendContent,
+  useChart,
+  Recharts,
+  BarChart,
+  Bar,
+  LineChart,
+  Line,
+  AreaChart,
+  Area,
+  PieChart,
+  Pie,
+  RadialBarChart,
+  RadialBar,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Cell,
+  Sector,
+} from './chart';
+export type { ChartConfig } from './chart';
+
+// StatCard component
+export { StatCard } from './stat-card';
+export type { StatCardProps } from './stat-card';
+
+// EmptyState component
+export { EmptyState } from './empty-state';
+export type { EmptyStateProps } from './empty-state';

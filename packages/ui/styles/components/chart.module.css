@@ -1,0 +1,161 @@
+/**
+ * Chart Component Styles
+ * Wrapper and tooltip styles for Recharts integration
+ */
+
+/* Container */
+.container {
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Recharts overrides */
+.container :global(.recharts-cartesian-grid-horizontal line),
+.container :global(.recharts-cartesian-grid-vertical line) {
+  stroke: var(--color-border-muted);
+}
+
+.container :global(.recharts-surface) {
+  outline: none;
+}
+
+.container :global(.recharts-polar-grid) {
+  stroke: var(--color-border-muted);
+}
+
+.container :global(.recharts-radial-bar-background-sector) {
+  fill: var(--color-bg-muted);
+}
+
+.container :global(.recharts-rectangle.recharts-tooltip-cursor) {
+  fill: var(--color-bg-muted);
+}
+
+.container :global(.recharts-dot[stroke="#fff"]) {
+  stroke: var(--color-bg-primary);
+}
+
+.container :global(.recharts-sector[stroke="#fff"]) {
+  stroke: var(--color-bg-primary);
+}
+
+.container :global(.recharts-layer) {
+  outline: none;
+}
+
+.container :global(.recharts-sector) {
+  outline: none;
+}
+
+/* Tooltip */
+.tooltip {
+  min-width: 8rem;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  font-size: var(--font-size-sm);
+}
+
+.tooltipLabel {
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-xs);
+  color: var(--color-text-primary);
+}
+
+.tooltipContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.tooltipItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.tooltipIndicator {
+  flex-shrink: 0;
+}
+
+.indicatorDot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--radius-full);
+  background-color: var(--indicator-color);
+}
+
+.indicatorLine {
+  width: 0.25rem;
+  height: 1rem;
+  border-radius: var(--radius-xs);
+  background-color: var(--indicator-color);
+}
+
+.indicatorDashed {
+  width: 0.25rem;
+  height: 1rem;
+  border-radius: var(--radius-xs);
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--indicator-color) 0,
+    var(--indicator-color) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+}
+
+.tooltipItemContent {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.tooltipItemLabel {
+  color: var(--color-text-secondary);
+}
+
+.tooltipItemValue {
+  font-weight: var(--font-weight-medium);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-primary);
+}
+
+/* Legend */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+  padding-top: var(--space-md);
+}
+
+.legendTop {
+  padding-top: 0;
+  padding-bottom: var(--space-md);
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.legendIcon {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--legend-color);
+}
+
+.legendLabel {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import "../styles/index.css";
 import { ThemeProvider } from "../components/utilities/theme-provider";
+import { ThemeScript } from "../components/utilities/theme-script";
 import HeaderMenu from "./components/HeaderMenu";
 
 export const metadata: Metadata = {
@@ -11,7 +12,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <ThemeScript />
+      </head>
       <body>
         <ThemeProvider>
           <header
@@ -67,6 +71,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                       style={{ color: "var(--color-text-primary)", textDecoration: "none" }}
                     >
                       Primitives
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/blocks"
+                      style={{ color: "var(--color-text-primary)", textDecoration: "none" }}
+                    >
+                      Blocks
                     </Link>
                   </li>
                   <li>
